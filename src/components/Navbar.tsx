@@ -27,6 +27,14 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                href="/order"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm md:text-base"
+              >
+                Place Order
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="#about"
                 className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm md:text-base"
               >
