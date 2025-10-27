@@ -4,6 +4,9 @@ import { supabase } from '@/lib/supabase'
 import { formatDate } from '@/lib/utils'
 import { notFound } from 'next/navigation'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 interface OrderPageProps {
   params: Promise<{
     orderId: string
