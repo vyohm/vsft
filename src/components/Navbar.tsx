@@ -22,7 +22,7 @@ export default function Navbar() {
                 href="/explore"
                 className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm md:text-base"
               >
-                Collection
+                Explore Catalogue
               </Link>
             </li>
             <li>
