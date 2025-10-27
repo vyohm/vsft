@@ -142,12 +142,12 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Design Number *
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="text"
                       required
@@ -155,14 +155,14 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
                       onChange={(e) =>
                         updateRow(row.id, 'design_number', e.target.value)
                       }
-                      className="flex-1 p-3 border-2 border-brand-quaternary rounded-lg focus:outline-none focus:border-brand-secondary"
+                      className="flex-1 p-3 border-2 border-brand-quaternary rounded-lg focus:outline-none focus:border-brand-secondary text-base"
                       placeholder="Enter design number"
                     />
                     <button
                       type="button"
                       onClick={() => searchDesignNumber(row.id, row.design_number)}
                       disabled={row.searching}
-                      className="px-4 py-2 bg-brand-primary text-brand-light rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors disabled:opacity-50"
+                      className="px-6 py-3 bg-brand-primary text-brand-light rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors disabled:opacity-50 whitespace-nowrap"
                     >
                       {row.searching ? 'Searching...' : 'Search'}
                     </button>
@@ -170,16 +170,16 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
                 </div>
 
                 {row.catalogue_item && (
-                  <div className="p-3 bg-brand-tertiary rounded-lg">
-                    <p className="font-semibold">Design #{row.catalogue_item.design_number}</p>
-                    <p className="text-2xl font-bold text-brand-secondary">
+                  <div className="p-4 bg-brand-tertiary rounded-lg">
+                    <p className="font-semibold text-lg">Design #{row.catalogue_item.design_number}</p>
+                    <p className="text-2xl md:text-3xl font-bold text-brand-secondary mt-1">
                       {formatPrice(row.catalogue_item.price)}
                     </p>
                   </div>
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Quantity *

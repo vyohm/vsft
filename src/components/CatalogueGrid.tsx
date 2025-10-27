@@ -68,34 +68,34 @@ export default function CatalogueGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {items.map((item) => (
           <div
             key={item.id}
-            className="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform"
+            className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl active:scale-95 transition-all"
           >
-            <div className="h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary">
+            <div className="h-48 sm:h-64 lg:h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary">
               {item.image_url && (
                 <img
                   src={item.image_url}
-                  alt={item.name}
+                  alt={item.name || `Design ${item.design_number}`}
                   className="w-full h-full object-cover"
                 />
               )}
             </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold">Design #{item.design_number}</h3>
+            <div className="p-4 sm:p-6">
+              <div className="mb-2">
+                <h3 className="text-lg sm:text-xl font-semibold">Design #{item.design_number}</h3>
               </div>
               {item.description && (
-                <p className="text-brand-quaternary mb-4">{item.description}</p>
+                <p className="text-brand-quaternary mb-3 text-sm sm:text-base line-clamp-2">{item.description}</p>
               )}
-              <div className="flex items-center justify-between mt-4">
-                <span className="text-2xl font-bold text-brand-secondary">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4">
+                <span className="text-xl sm:text-2xl font-bold text-brand-secondary">
                   {formatPrice(item.price)}
                 </span>
-                <Link href="/order">
-                  <button className="bg-brand-primary text-brand-light px-6 py-2 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors">
+                <Link href="/order" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto bg-brand-primary text-brand-light px-5 py-2.5 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors text-sm font-medium">
                     Order Now
                   </button>
                 </Link>
