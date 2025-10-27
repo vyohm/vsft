@@ -171,7 +171,7 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
 
                 {row.catalogue_item && (
                   <div className="p-3 bg-brand-tertiary rounded-lg">
-                    <p className="font-semibold">{row.catalogue_item.name}</p>
+                    <p className="font-semibold">Design #{row.catalogue_item.design_number}</p>
                     <p className="text-2xl font-bold text-brand-secondary">
                       {formatPrice(row.catalogue_item.price)}
                     </p>

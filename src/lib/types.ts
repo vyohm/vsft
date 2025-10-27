@@ -3,13 +3,14 @@
 export interface CatalogueItem {
   id: number
   design_number: string
-  name: string
-  description?: string
   price: number
-  image_url?: string
   is_active: boolean
   created_at?: string
   updated_at?: string
+  // Optional fields that may be added later
+  name?: string
+  description?: string
+  image_url?: string
 }
 
 export interface Customer {

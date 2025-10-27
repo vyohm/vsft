@@ -80,11 +80,12 @@ export default function CatalogueGrid() {
             </div>
             <div className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-xl font-semibold">{item.name}</h3>
-                <span className="text-sm text-brand-quaternary">#{item.design_number}</span>
+                <h3 className="text-xl font-semibold">Design #{item.design_number}</h3>
               </div>
-              <p className="text-brand-quaternary mb-4">{item.description}</p>
-              <div className="flex items-center justify-between">
+              {item.description && (
+                <p className="text-brand-quaternary mb-4">{item.description}</p>
+              )}
+              <div className="flex items-center justify-between mt-4">
                 <span className="text-2xl font-bold text-brand-secondary">
                   {formatPrice(item.price)}
                 </span>

@@ -123,11 +123,8 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold">
-                          {item.catalogue_item?.name || item.design_number}
-                        </h3>
-                        <p className="text-sm text-brand-quaternary">
                           Design #{item.design_number}
-                        </p>
+                        </h3>
                         <div className="flex gap-4 text-sm mt-1">
                           <span>Qty: {item.quantity}</span>
                           <span>Color: {item.color_option}</span>
