@@ -44,7 +44,7 @@ export default function CatalogueGrid() {
   if (loading) {
     return (
       <div className="text-center py-12">
-        <p className="text-xl text-brand-quaternary">Loading products...</p>
+        <p className="text-xl text-brand-quaternary">Loading catalogue...</p>
       </div>
     )
   }
@@ -52,9 +52,14 @@ export default function CatalogueGrid() {
   if (items.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-xl text-brand-quaternary">
-          No items available yet. Check back soon!
-        </p>
+        <div className="space-y-4">
+          <p className="text-xl text-brand-quaternary">
+            No items found. Total count: {totalCount}
+          </p>
+          <p className="text-sm text-brand-quaternary">
+            Check browser console (F12) for errors
+          </p>
+        </div>
       </div>
     )
   }
