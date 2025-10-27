@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #213E42;
+  --color-secondary: #C9A78B;
+  --color-tertiary: #F3DDC8;
+  --color-quaternary: #91A1A1;
+  --color-light: #FEEAD2;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-brand-light text-brand-primary;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
