@@ -10,10 +10,9 @@
   --color-light: #FEEAD2;
 }
 
-@layer base {
-  body {
-    @apply bg-brand-light text-brand-primary;
-  }
+body {
+  background-color: #FEEAD2;
+  color: #213E42;
 }
 
 @layer utilities {
