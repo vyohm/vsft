@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { supabase } from '@/lib/supabase'
-import { formatDate } from '@/lib/utils'
+import { formatDate, formatPrice } from '@/lib/utils'
 import { notFound } from 'next/navigation'
 
 // Force dynamic rendering
@@ -21,7 +21,7 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
     .select(`
       *,
       customer:customers(*),
-      product:products(*)
+      order_items(*, catalogue_item:catalogue_items(*))
     `)
     .eq('id', orderId)
     .single()
@@ -62,8 +62,8 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
 
             <div className="border-t border-b border-gray-200 py-6 space-y-4">
               <div className="flex justify-between">
-                <span className="text-brand-quaternary">Order ID:</span>
-                <span className="font-semibold">{order.id}</span>
+                <span className="text-brand-quaternary">Order Number:</span>
+                <span className="font-semibold">{order.order_number}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-brand-quaternary">Date:</span>
@@ -71,7 +71,7 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
               </div>
               <div className="flex justify-between">
                 <span className="text-brand-quaternary">Status:</span>
-                <span className="inline-flex px-3 py-1 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-800">
+                <span className="inline-flex px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
                   {order.status.toUpperCase()}
                 </span>
               </div>
@@ -84,35 +84,71 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
                   <span className="text-brand-quaternary">Name:</span>{' '}
                   {order.customer.name}
                 </p>
-                <p>
-                  <span className="text-brand-quaternary">Email:</span>{' '}
-                  {order.customer.email}
-                </p>
-                {order.customer.phone && (
+                {order.customer.company_name && (
                   <p>
-                    <span className="text-brand-quaternary">Phone:</span>{' '}
-                    {order.customer.phone}
+                    <span className="text-brand-quaternary">Company:</span>{' '}
+                    {order.customer.company_name}
                   </p>
                 )}
+                {order.customer.gst_number && (
+                  <p>
+                    <span className="text-brand-quaternary">GST Number:</span>{' '}
+                    {order.customer.gst_number}
+                  </p>
+                )}
+                <p>
+                  <span className="text-brand-quaternary">Phone:</span>{' '}
+                  {order.customer.phone_number}
+                </p>
               </div>
             </div>
 
             <div className="mt-6">
-              <h2 className="text-xl font-semibold mb-4">Product Details</h2>
-              <div className="flex items-center gap-4">
-                <div className="w-24 h-24 bg-gradient-to-br from-brand-tertiary to-brand-quaternary rounded-lg">
-                  {order.product.image_url && (
-                    <img
-                      src={order.product.image_url}
-                      alt={order.product.name}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  )}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg">{order.product.name}</h3>
-                  <p className="text-brand-quaternary">Quantity: {order.quantity}</p>
-                </div>
+              <h2 className="text-xl font-semibold mb-4">Order Items</h2>
+              <div className="space-y-4">
+                {order.order_items.map((item: any) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between p-4 bg-brand-tertiary rounded-lg"
+                  >
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="w-16 h-16 bg-gradient-to-br from-brand-tertiary to-brand-quaternary rounded-lg">
+                        {item.catalogue_item?.image_url && (
+                          <img
+                            src={item.catalogue_item.image_url}
+                            alt={item.catalogue_item.name}
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold">
+                          {item.catalogue_item?.name || item.design_number}
+                        </h3>
+                        <p className="text-sm text-brand-quaternary">
+                          Design #{item.design_number}
+                        </p>
+                        <div className="flex gap-4 text-sm mt-1">
+                          <span>Qty: {item.quantity}</span>
+                          <span>Color: {item.color_option}</span>
+                          <span>{formatPrice(item.unit_price)} each</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-bold text-brand-secondary">
+                        {formatPrice(item.line_total || item.unit_price * item.quantity)}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 p-4 bg-brand-secondary rounded-lg">
+              <div className="flex justify-between items-center text-brand-primary">
+                <span className="text-xl font-bold">Order Total:</span>
+                <span className="text-2xl font-bold">{formatPrice(order.total_amount)}</span>
               </div>
             </div>
           </div>

@@ -1,34 +1,69 @@
-// Database types - adjust based on your Supabase schema
+// Database types matching Supabase schema
 
-export interface Product {
-  id: string
+export interface CatalogueItem {
+  id: number
+  design_number: string
   name: string
-  description: string
+  description?: string
   price: number
   image_url?: string
-  category?: string
+  is_active: boolean
   created_at?: string
+  updated_at?: string
 }
 
 export interface Customer {
   id: string
   name: string
-  email: string
-  phone?: string
+  company_name?: string
+  gst_number?: string
+  phone_number: string
+  phone_verified: boolean
   created_at?: string
+  updated_at?: string
 }
 
 export interface Order {
   id: string
   customer_id: string
-  product_id: string
-  quantity: number
+  order_number: string
+  status: 'draft' | 'submitted' | 'processing' | 'completed' | 'cancelled'
   total_amount: number
-  status: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled'
+  notes?: string
+  created_at?: string
+  updated_at?: string
+}
+
+export interface OrderItem {
+  id: string
+  order_id: string
+  catalogue_item_id: number
+  design_number: string
+  unit_price: number
+  quantity: number
+  color_option: 'color1' | 'color2' | 'color3' | 'all'
+  line_total?: number
   created_at?: string
 }
 
 export interface OrderWithDetails extends Order {
   customer?: Customer
-  product?: Product
+  order_items?: (OrderItem & { catalogue_item?: CatalogueItem })[]
 }
+
+// Form types
+export interface CustomerFormData {
+  name: string
+  company_name?: string
+  gst_number?: string
+  phone_number: string
+}
+
+export interface OrderItemFormData {
+  design_number: string
+  quantity: number
+  color_option: 'color1' | 'color2' | 'color3' | 'all'
+}
+
+// Legacy Product type for compatibility
+export interface Product extends CatalogueItem {}

@@ -2,32 +2,44 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { Product } from '@/lib/types'
+import { CatalogueItem } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
+import Pagination from './Pagination'
+import Link from 'next/link'
+
+const ITEMS_PER_PAGE = 10
 
 export default function CatalogueGrid() {
-  const [products, setProducts] = useState<Product[]>([])
+  const [items, setItems] = useState<CatalogueItem[]>([])
   const [loading, setLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalCount, setTotalCount] = useState(0)
 
   useEffect(() => {
-    async function fetchProducts() {
+    async function fetchItems() {
       try {
-        const { data, error } = await supabase
-          .from('products')
-          .select('*')
+        const from = (currentPage - 1) * ITEMS_PER_PAGE
+        const to = from + ITEMS_PER_PAGE - 1
+
+        const { data, error, count } = await supabase
+          .from('catalogue_items')
+          .select('*', { count: 'exact' })
+          .eq('is_active', true)
           .order('created_at', { ascending: false })
+          .range(from, to)
 
         if (error) throw error
-        setProducts(data || [])
+        setItems(data || [])
+        setTotalCount(count || 0)
       } catch (error) {
-        console.error('Error fetching products:', error)
+        console.error('Error fetching catalogue items:', error)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchProducts()
-  }, [])
+    fetchItems()
+  }, [currentPage])
 
   if (loading) {
     return (
@@ -37,46 +49,63 @@ export default function CatalogueGrid() {
     )
   }
 
-  if (products.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-xl text-brand-quaternary">
-          No products available yet. Check back soon!
+          No items available yet. Check back soon!
         </p>
       </div>
     )
   }
 
+  const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE)
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform"
-        >
-          <div className="h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary">
-            {product.image_url && (
-              <img
-                src={product.image_url}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
-            )}
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-            <p className="text-brand-quaternary mb-4">{product.description}</p>
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-brand-secondary">
-                {formatPrice(product.price)}
-              </span>
-              <button className="bg-brand-primary text-brand-light px-6 py-2 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors">
-                Order Now
-              </button>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {items.map((item) => (
+          <div
+            key={item.id}
+            className="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform"
+          >
+            <div className="h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary">
+              {item.image_url && (
+                <img
+                  src={item.image_url}
+                  alt={item.name}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xl font-semibold">{item.name}</h3>
+                <span className="text-sm text-brand-quaternary">#{item.design_number}</span>
+              </div>
+              <p className="text-brand-quaternary mb-4">{item.description}</p>
+              <div className="flex items-center justify-between">
+                <span className="text-2xl font-bold text-brand-secondary">
+                  {formatPrice(item.price)}
+                </span>
+                <Link href="/order">
+                  <button className="bg-brand-primary text-brand-light px-6 py-2 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors">
+                    Order Now
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
+    </>
   )
 }
