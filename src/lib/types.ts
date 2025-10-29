@@ -86,5 +86,19 @@ export interface StockItemWithCatalogue extends StockItem {
   catalogue_item?: CatalogueItem
 }
 
+// Grouped Stock Item by design_number
+export interface GroupedStockItem {
+  design_number: string
+  category?: string
+  total_quantity: number
+  catalogue_item_id?: number
+  variations: Array<{
+    id: number
+    size?: string
+    color?: string
+    quantity: number
+  }>
+}
+
 // Legacy Product type for compatibility
 export interface Product extends CatalogueItem {}

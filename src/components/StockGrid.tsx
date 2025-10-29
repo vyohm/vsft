@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { StockItem } from '@/lib/types'
-import { formatPrice } from '@/lib/utils'
+import { StockItem, GroupedStockItem } from '@/lib/types'
 import Pagination from './Pagination'
 
 const ITEMS_PER_PAGE = 10
 
 export default function StockGrid() {
-  const [items, setItems] = useState<StockItem[]>([])
+  const [groupedItems, setGroupedItems] = useState<GroupedStockItem[]>([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalCount, setTotalCount] = useState(0)
@@ -84,12 +83,9 @@ export default function StockGrid() {
             .not('category', 'is', null)
             .order('category')
             .limit(1000)
-          console.log('Raw category data (fallback):', fallbackCategories)
           const uniqueCategories = Array.from(new Set(fallbackCategories?.map(item => item.category).filter(Boolean))) as string[]
-          console.log('Unique categories:', uniqueCategories)
           setCategories(uniqueCategories)
         } else {
-          console.log('Unique categories from RPC:', categoryData)
           // Extract category values from RPC response objects
           const categoryValues = categoryData?.map((item: any) => item.category).filter(Boolean) || []
           setCategories(categoryValues)
@@ -102,18 +98,16 @@ export default function StockGrid() {
     fetchFilterOptions()
   }, [])
 
-  // Fetch stock items
+  // Fetch and group stock items
   useEffect(() => {
     async function fetchItems() {
       try {
         setLoading(true)
-        const from = (currentPage - 1) * ITEMS_PER_PAGE
-        const to = from + ITEMS_PER_PAGE - 1
 
         let query = supabase
           .from('stock_items')
-          .select('*', { count: 'exact' })
-          .order('created_at', { ascending: false })
+          .select('*')
+          .order('design_number', { ascending: true })
 
         // Apply search filter
         if (searchQuery) {
@@ -135,7 +129,7 @@ export default function StockGrid() {
           query = query.eq('category', selectedCategory)
         }
 
-        const { data, error, count } = await query.range(from, to)
+        const { data, error } = await query
 
         if (error) {
           console.error('Error fetching stock items:', error)
@@ -145,9 +139,14 @@ export default function StockGrid() {
             hint: error.hint,
             code: error.code
           })
+          setGroupedItems([])
+          setTotalCount(0)
+        } else {
+          // Group items by design_number
+          const grouped = groupByDesignNumber(data || [])
+          setGroupedItems(grouped)
+          setTotalCount(grouped.length)
         }
-        setItems(data || [])
-        setTotalCount(count || 0)
       } catch (error) {
         console.error('Error fetching stock items:', error)
       } finally {
@@ -156,12 +155,38 @@ export default function StockGrid() {
     }
 
     fetchItems()
-  }, [currentPage, searchQuery, selectedSize, selectedColor, selectedCategory])
+  }, [searchQuery, selectedSize, selectedColor, selectedCategory])
 
   // Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1)
   }, [searchQuery, selectedSize, selectedColor, selectedCategory])
+
+  // Group stock items by design_number
+  const groupByDesignNumber = (items: StockItem[]): GroupedStockItem[] => {
+    const grouped = items.reduce((acc, item) => {
+      const key = item.design_number
+      if (!acc[key]) {
+        acc[key] = {
+          design_number: item.design_number,
+          category: item.category,
+          catalogue_item_id: item.catalogue_item_id,
+          total_quantity: 0,
+          variations: []
+        }
+      }
+      acc[key].total_quantity += item.quantity
+      acc[key].variations.push({
+        id: item.id,
+        size: item.size,
+        color: item.color,
+        quantity: item.quantity
+      })
+      return acc
+    }, {} as Record<string, GroupedStockItem>)
+
+    return Object.values(grouped)
+  }
 
   const handleClearFilters = () => {
     setSearchQuery('')
@@ -178,6 +203,10 @@ export default function StockGrid() {
     )
   }
 
+  // Pagination logic
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+  const endIndex = startIndex + ITEMS_PER_PAGE
+  const paginatedItems = groupedItems.slice(startIndex, endIndex)
   const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE)
   const hasActiveFilters = searchQuery || selectedSize || selectedColor || selectedCategory
 
@@ -253,12 +282,12 @@ export default function StockGrid() {
 
         {/* Results Count */}
         <div className="text-sm text-brand-quaternary">
-          {totalCount} {totalCount === 1 ? 'item' : 'items'} found
+          {totalCount} {totalCount === 1 ? 'design' : 'designs'} found
         </div>
       </div>
 
       {/* Stock Items Grid */}
-      {items.length === 0 ? (
+      {paginatedItems.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-xl text-brand-quaternary">
             No stock items found matching your filters.
@@ -275,55 +304,52 @@ export default function StockGrid() {
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-            {items.map((item) => (
+            {paginatedItems.map((item) => (
               <div
-                key={item.id}
+                key={item.design_number}
                 className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all"
               >
                 <div className="h-48 sm:h-64 lg:h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary flex items-center justify-center">
                   <div className="text-center text-white">
-                    <p className="text-4xl font-bold mb-2">{item.quantity}</p>
-                    <p className="text-sm uppercase tracking-wider">In Stock</p>
+                    <p className="text-4xl font-bold mb-2">{item.total_quantity}</p>
+                    <p className="text-sm uppercase tracking-wider">Total In Stock</p>
                   </div>
                 </div>
                 <div className="p-4 sm:p-6">
-                  <div className="mb-2">
+                  <div className="mb-3">
                     <h3 className="text-lg sm:text-xl font-semibold">
                       Design #{item.design_number}
                     </h3>
+                    {item.category && (
+                      <p className="text-sm text-brand-quaternary">{item.category}</p>
+                    )}
                   </div>
 
-                  <div className="space-y-2 text-sm sm:text-base">
-                    {item.size && (
-                      <div className="flex justify-between">
-                        <span className="text-brand-quaternary">Size:</span>
-                        <span className="font-medium">{item.size}</span>
-                      </div>
-                    )}
-                    {item.color && (
-                      <div className="flex justify-between">
-                        <span className="text-brand-quaternary">Color:</span>
-                        <span className="font-medium">{item.color}</span>
-                      </div>
-                    )}
-                    {item.category && (
-                      <div className="flex justify-between">
-                        <span className="text-brand-quaternary">Category:</span>
-                        <span className="font-medium">{item.category}</span>
-                      </div>
-                    )}
-                    <div className="flex justify-between">
-                      <span className="text-brand-quaternary">Quantity:</span>
-                      <span className="font-bold text-brand-secondary">{item.quantity}</span>
+                  {/* Variations */}
+                  <div className="space-y-2">
+                    <p className="text-xs uppercase tracking-wider text-brand-quaternary font-semibold">
+                      Available Variations ({item.variations.length})
+                    </p>
+                    <div className="max-h-32 overflow-y-auto space-y-1.5">
+                      {item.variations.map((variation) => (
+                        <div
+                          key={variation.id}
+                          className="flex items-center justify-between text-sm bg-brand-tertiary/20 px-3 py-2 rounded"
+                        >
+                          <div className="flex gap-2">
+                            {variation.size && (
+                              <span className="font-medium">{variation.size}</span>
+                            )}
+                            {variation.color && (
+                              <span className="text-brand-quaternary">• {variation.color}</span>
+                            )}
+                          </div>
+                          <span className="font-bold text-brand-secondary">
+                            {variation.quantity}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                    {item.price && (
-                      <div className="flex justify-between pt-2 border-t">
-                        <span className="text-brand-quaternary">Price:</span>
-                        <span className="text-xl font-bold text-brand-secondary">
-                          {formatPrice(item.price)}
-                        </span>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
