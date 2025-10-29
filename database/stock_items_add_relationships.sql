@@ -31,9 +31,8 @@ where si.design_number = ci.design_number
 create or replace view stock_items_with_catalogue as
 select
   si.*,
-  ci.name as catalogue_name,
-  ci.description as catalogue_description,
-  ci.image_url as catalogue_image_url,
+  ci.design_number as catalogue_design_number,
+  ci.price as catalogue_price,
   ci.is_active as catalogue_is_active,
   coalesce(si.price, ci.price) as effective_price
 from stock_items si
