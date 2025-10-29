@@ -11,6 +11,7 @@ export interface CatalogueItem {
   name?: string
   description?: string
   image_url?: string
+  category?: string
 }
 
 export interface Customer {
@@ -70,6 +71,7 @@ export interface OrderItemFormData {
 export interface StockItem {
   id: number
   design_number: string
+  catalogue_item_id?: number
   size?: string
   color?: string
   category?: string
@@ -77,6 +79,11 @@ export interface StockItem {
   price?: number
   created_at?: string
   updated_at?: string
+}
+
+// Stock Item with Catalogue details
+export interface StockItemWithCatalogue extends StockItem {
+  catalogue_item?: CatalogueItem
 }
 
 // Legacy Product type for compatibility
