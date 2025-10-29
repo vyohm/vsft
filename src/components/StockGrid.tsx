@@ -45,7 +45,9 @@ export default function StockGrid() {
           const uniqueSizes = Array.from(new Set(fallbackSizes?.map(item => item.size).filter(Boolean))) as string[]
           setSizes(uniqueSizes)
         } else {
-          setSizes(sizeData || [])
+          // Extract size values from RPC response objects
+          const sizeValues = sizeData?.map((item: any) => item.size).filter(Boolean) || []
+          setSizes(sizeValues)
         }
 
         // Fetch unique colors using RPC call for better performance
@@ -64,7 +66,9 @@ export default function StockGrid() {
           const uniqueColors = Array.from(new Set(fallbackColors?.map(item => item.color).filter(Boolean))) as string[]
           setColors(uniqueColors)
         } else {
-          setColors(colorData || [])
+          // Extract color values from RPC response objects
+          const colorValues = colorData?.map((item: any) => item.color).filter(Boolean) || []
+          setColors(colorValues)
         }
 
         // Fetch unique categories using RPC call for better performance
@@ -86,7 +90,9 @@ export default function StockGrid() {
           setCategories(uniqueCategories)
         } else {
           console.log('Unique categories from RPC:', categoryData)
-          setCategories(categoryData || [])
+          // Extract category values from RPC response objects
+          const categoryValues = categoryData?.map((item: any) => item.category).filter(Boolean) || []
+          setCategories(categoryValues)
         }
       } catch (error) {
         console.error('Error fetching filter options:', error)
