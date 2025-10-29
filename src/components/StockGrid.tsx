@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { StockItem, GroupedStockItem } from '@/lib/types'
 import Pagination from './Pagination'
+import StockCard from './StockCard'
 
 const ITEMS_PER_PAGE = 10
 
@@ -305,54 +306,7 @@ export default function StockGrid() {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {paginatedItems.map((item) => (
-              <div
-                key={item.design_number}
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all"
-              >
-                <div className="h-48 sm:h-64 lg:h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <p className="text-4xl font-bold mb-2">{item.total_quantity}</p>
-                    <p className="text-sm uppercase tracking-wider">Total In Stock</p>
-                  </div>
-                </div>
-                <div className="p-4 sm:p-6">
-                  <div className="mb-3">
-                    <h3 className="text-lg sm:text-xl font-semibold">
-                      Design #{item.design_number}
-                    </h3>
-                    {item.category && (
-                      <p className="text-sm text-brand-quaternary">{item.category}</p>
-                    )}
-                  </div>
-
-                  {/* Variations */}
-                  <div className="space-y-2">
-                    <p className="text-xs uppercase tracking-wider text-brand-quaternary font-semibold">
-                      Available Variations ({item.variations.length})
-                    </p>
-                    <div className="max-h-32 overflow-y-auto space-y-1.5">
-                      {item.variations.map((variation) => (
-                        <div
-                          key={variation.id}
-                          className="flex items-center justify-between text-sm bg-brand-tertiary/20 px-3 py-2 rounded"
-                        >
-                          <div className="flex gap-2">
-                            {variation.size && (
-                              <span className="font-medium">{variation.size}</span>
-                            )}
-                            {variation.color && (
-                              <span className="text-brand-quaternary">• {variation.color}</span>
-                            )}
-                          </div>
-                          <span className="font-bold text-brand-secondary">
-                            {variation.quantity}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <StockCard key={item.design_number} item={item} />
             ))}
           </div>
 
