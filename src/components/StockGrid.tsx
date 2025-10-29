@@ -30,34 +30,46 @@ export default function StockGrid() {
     async function fetchFilterOptions() {
       try {
         // Fetch unique sizes
-        const { data: sizeData } = await supabase
+        const { data: sizeData, error: sizeError } = await supabase
           .from('stock_items')
           .select('size')
           .not('size', 'is', null)
           .order('size')
 
-        const uniqueSizes = Array.from(new Set(sizeData?.map(item => item.size).filter(Boolean))) as string[]
-        setSizes(uniqueSizes)
+        if (sizeError) {
+          console.error('Error fetching sizes:', sizeError)
+        } else {
+          const uniqueSizes = Array.from(new Set(sizeData?.map(item => item.size).filter(Boolean))) as string[]
+          setSizes(uniqueSizes)
+        }
 
         // Fetch unique colors
-        const { data: colorData } = await supabase
+        const { data: colorData, error: colorError } = await supabase
           .from('stock_items')
           .select('color')
           .not('color', 'is', null)
           .order('color')
 
-        const uniqueColors = Array.from(new Set(colorData?.map(item => item.color).filter(Boolean))) as string[]
-        setColors(uniqueColors)
+        if (colorError) {
+          console.error('Error fetching colors:', colorError)
+        } else {
+          const uniqueColors = Array.from(new Set(colorData?.map(item => item.color).filter(Boolean))) as string[]
+          setColors(uniqueColors)
+        }
 
         // Fetch unique categories
-        const { data: categoryData } = await supabase
+        const { data: categoryData, error: categoryError } = await supabase
           .from('stock_items')
           .select('category')
           .not('category', 'is', null)
           .order('category')
 
-        const uniqueCategories = Array.from(new Set(categoryData?.map(item => item.category).filter(Boolean))) as string[]
-        setCategories(uniqueCategories)
+        if (categoryError) {
+          console.error('Error fetching categories:', categoryError)
+        } else {
+          const uniqueCategories = Array.from(new Set(categoryData?.map(item => item.category).filter(Boolean))) as string[]
+          setCategories(uniqueCategories)
+        }
       } catch (error) {
         console.error('Error fetching filter options:', error)
       }
@@ -101,7 +113,15 @@ export default function StockGrid() {
 
         const { data, error, count } = await query.range(from, to)
 
-        if (error) throw error
+        if (error) {
+          console.error('Error fetching stock items:', error)
+          console.error('Error details:', {
+            message: error.message,
+            details: error.details,
+            hint: error.hint,
+            code: error.code
+          })
+        }
         setItems(data || [])
         setTotalCount(count || 0)
       } catch (error) {
