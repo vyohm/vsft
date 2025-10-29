@@ -145,8 +145,10 @@ export default function StockGrid() {
         } else {
           // Group items by design_number
           const grouped = groupByDesignNumber(data || [])
-          setGroupedItems(grouped)
-          setTotalCount(grouped.length)
+          // Sort by total_quantity descending (highest stock first)
+          const sorted = grouped.sort((a, b) => b.total_quantity - a.total_quantity)
+          setGroupedItems(sorted)
+          setTotalCount(sorted.length)
         }
       } catch (error) {
         console.error('Error fetching stock items:', error)
