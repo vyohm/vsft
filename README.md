@@ -6,7 +6,8 @@ A modern e-commerce website for SFT fashion brand built with Next.js, TypeScript
 
 - 🎨 Modern, responsive design with brand colors
 - 🛍️ Product catalogue with dynamic loading
-- 📦 Order management system
+- 📦 Stock inventory management with advanced filtering
+- 🔄 Order management system
 - 👥 Customer management
 - 🗄️ Supabase PostgreSQL backend
 - ⚡ Server-side rendering with Next.js 14+
@@ -97,6 +98,7 @@ vSFT/
 │   │   ├── layout.tsx          # Root layout
 │   │   ├── page.tsx             # Home page
 │   │   ├── explore/             # Product catalogue
+│   │   ├── stock/               # Stock inventory
 │   │   ├── order/               # Order pages
 │   │   └── api/                 # API routes
 │   │       ├── catalogue/
@@ -106,6 +108,8 @@ vSFT/
 │   │   ├── Navbar.tsx
 │   │   ├── Footer.tsx
 │   │   ├── CatalogueGrid.tsx
+│   │   ├── StockGrid.tsx
+│   │   ├── StockCard.tsx
 │   │   ├── OrderForm.tsx
 │   │   └── Pagination.tsx
 │   ├── lib/
@@ -114,6 +118,8 @@ vSFT/
 │   │   └── utils.ts            # Utility functions
 │   └── styles/
 │       └── globals.css         # Global styles
+├── database/
+│   └── *.sql                   # Database setup scripts
 ├── public/
 │   └── assets/                 # Static assets
 │       ├── logos/
@@ -124,6 +130,20 @@ vSFT/
 ├── tsconfig.json
 └── package.json
 ```
+
+## Stock Inventory Management
+
+The stock inventory system provides comprehensive tracking and filtering:
+
+- **Grouped by Design**: Items grouped by design_number to avoid duplicates
+- **Advanced Filtering**: Search by design number, filter by size, color, and category
+- **Smart Variations Display**: Toggle between "By Color" and "By Size" views
+  - By Color: See all available sizes for each color
+  - By Size: See all available colors for each size
+- **Sorted by Stock**: Designs with highest inventory appear first
+- **Real-time Totals**: Shows total quantity across all variations
+
+See [database/README.md](database/README.md) for setup instructions.
 
 ## Available Scripts
 
