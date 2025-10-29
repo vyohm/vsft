@@ -28,13 +28,21 @@ where si.design_number = ci.design_number
 */
 
 -- Step 4: Create a view that joins stock_items with catalogue_items for easier querying
+-- Note: Only including columns that we know exist in both tables
 create or replace view stock_items_with_catalogue as
 select
-  si.*,
+  si.id,
+  si.design_number,
+  si.catalogue_item_id,
+  si.size,
+  si.color,
+  si.category,
+  si.quantity,
+  si.created_at,
+  si.updated_at,
   ci.design_number as catalogue_design_number,
   ci.price as catalogue_price,
-  ci.is_active as catalogue_is_active,
-  coalesce(si.price, ci.price) as effective_price
+  ci.is_active as catalogue_is_active
 from stock_items si
 left join catalogue_items ci on si.catalogue_item_id = ci.id;
 
