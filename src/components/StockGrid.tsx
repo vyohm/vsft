@@ -29,48 +29,64 @@ export default function StockGrid() {
   useEffect(() => {
     async function fetchFilterOptions() {
       try {
-        // Fetch unique sizes
+        // Fetch unique sizes using RPC call for better performance
         const { data: sizeData, error: sizeError } = await supabase
-          .from('stock_items')
-          .select('size')
-          .not('size', 'is', null)
-          .order('size')
+          .rpc('get_unique_sizes')
 
         if (sizeError) {
           console.error('Error fetching sizes:', sizeError)
-        } else {
-          const uniqueSizes = Array.from(new Set(sizeData?.map(item => item.size).filter(Boolean))) as string[]
+          // Fallback to regular query with limit
+          const { data: fallbackSizes } = await supabase
+            .from('stock_items')
+            .select('size')
+            .not('size', 'is', null)
+            .order('size')
+            .limit(1000)
+          const uniqueSizes = Array.from(new Set(fallbackSizes?.map(item => item.size).filter(Boolean))) as string[]
           setSizes(uniqueSizes)
+        } else {
+          setSizes(sizeData || [])
         }
 
-        // Fetch unique colors
+        // Fetch unique colors using RPC call for better performance
         const { data: colorData, error: colorError } = await supabase
-          .from('stock_items')
-          .select('color')
-          .not('color', 'is', null)
-          .order('color')
+          .rpc('get_unique_colors')
 
         if (colorError) {
           console.error('Error fetching colors:', colorError)
-        } else {
-          const uniqueColors = Array.from(new Set(colorData?.map(item => item.color).filter(Boolean))) as string[]
+          // Fallback to regular query with limit
+          const { data: fallbackColors } = await supabase
+            .from('stock_items')
+            .select('color')
+            .not('color', 'is', null)
+            .order('color')
+            .limit(1000)
+          const uniqueColors = Array.from(new Set(fallbackColors?.map(item => item.color).filter(Boolean))) as string[]
           setColors(uniqueColors)
+        } else {
+          setColors(colorData || [])
         }
 
-        // Fetch unique categories
+        // Fetch unique categories using RPC call for better performance
         const { data: categoryData, error: categoryError } = await supabase
-          .from('stock_items')
-          .select('category')
-          .not('category', 'is', null)
-          .order('category')
+          .rpc('get_unique_categories')
 
         if (categoryError) {
           console.error('Error fetching categories:', categoryError)
-        } else {
-          console.log('Raw category data:', categoryData)
-          const uniqueCategories = Array.from(new Set(categoryData?.map(item => item.category).filter(Boolean))) as string[]
+          // Fallback to regular query with limit
+          const { data: fallbackCategories } = await supabase
+            .from('stock_items')
+            .select('category')
+            .not('category', 'is', null)
+            .order('category')
+            .limit(1000)
+          console.log('Raw category data (fallback):', fallbackCategories)
+          const uniqueCategories = Array.from(new Set(fallbackCategories?.map(item => item.category).filter(Boolean))) as string[]
           console.log('Unique categories:', uniqueCategories)
           setCategories(uniqueCategories)
+        } else {
+          console.log('Unique categories from RPC:', categoryData)
+          setCategories(categoryData || [])
         }
       } catch (error) {
         console.error('Error fetching filter options:', error)
