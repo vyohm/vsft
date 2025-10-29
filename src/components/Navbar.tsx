@@ -51,6 +51,14 @@ export default function Navbar() {
             </li>
             <li>
               <Link
+                href="/stock"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
+              >
+                Stock
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/order"
                 className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
               >
@@ -96,6 +104,15 @@ export default function Navbar() {
                   className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
                 >
                   Catalogue
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/stock"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
+                >
+                  Stock
                 </Link>
               </li>
               <li>

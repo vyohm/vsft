@@ -66,5 +66,18 @@ export interface OrderItemFormData {
   color_option: 'color1' | 'color2' | 'color3' | 'all'
 }
 
+// Stock Item type
+export interface StockItem {
+  id: number
+  design_number: string
+  size?: string
+  color?: string
+  category?: string
+  quantity: number
+  price?: number
+  created_at?: string
+  updated_at?: string
+}
+
 // Legacy Product type for compatibility
 export interface Product extends CatalogueItem {}
