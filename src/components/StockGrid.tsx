@@ -67,7 +67,9 @@ export default function StockGrid() {
         if (categoryError) {
           console.error('Error fetching categories:', categoryError)
         } else {
+          console.log('Raw category data:', categoryData)
           const uniqueCategories = Array.from(new Set(categoryData?.map(item => item.category).filter(Boolean))) as string[]
+          console.log('Unique categories:', uniqueCategories)
           setCategories(uniqueCategories)
         }
       } catch (error) {
