@@ -11,6 +11,7 @@ export interface CatalogueItem {
   name?: string
   description?: string
   image_url?: string
+  category?: string
 }
 
 export interface Customer {
@@ -64,6 +65,39 @@ export interface OrderItemFormData {
   design_number: string
   quantity: number
   color_option: 'color1' | 'color2' | 'color3' | 'all'
+}
+
+// Stock Item type
+export interface StockItem {
+  id: number
+  design_number: string
+  catalogue_item_id?: number
+  size?: string
+  color?: string
+  category?: string
+  quantity: number
+  price?: number
+  created_at?: string
+  updated_at?: string
+}
+
+// Stock Item with Catalogue details
+export interface StockItemWithCatalogue extends StockItem {
+  catalogue_item?: CatalogueItem
+}
+
+// Grouped Stock Item by design_number
+export interface GroupedStockItem {
+  design_number: string
+  category?: string
+  total_quantity: number
+  catalogue_item_id?: number
+  variations: Array<{
+    id: number
+    size?: string
+    color?: string
+    quantity: number
+  }>
 }
 
 // Legacy Product type for compatibility
