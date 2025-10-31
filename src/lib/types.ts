@@ -12,6 +12,7 @@ export interface CatalogueItem {
   description?: string
   image_url?: string
   category?: string
+  photoshoot_url?: string
 }
 
 export interface Customer {
