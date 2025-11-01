@@ -7,7 +7,7 @@ import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
 import Link from 'next/link'
 
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 12
 
 export default function CatalogueGrid() {
   const [items, setItems] = useState<CatalogueItem[]>([])
@@ -79,7 +79,7 @@ export default function CatalogueGrid() {
                 <img
                   src={item.photoshoot_url || item.image_url}
                   alt={item.name || `Design ${item.design_number}`}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
               )}
             </div>
