@@ -68,22 +68,22 @@ export default function CatalogueGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
         {items.map((item) => (
           <div
             key={item.id}
             className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl active:scale-95 transition-all"
           >
-            <div className="relative w-full aspect-[3/4] bg-gradient-to-br from-brand-tertiary to-brand-quaternary">
+            <div className="relative w-full aspect-[3/4] bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-2">
               {(item.photoshoot_url || item.image_url) && (
                 <img
                   src={item.photoshoot_url || item.image_url}
                   alt={item.name || `Design ${item.design_number}`}
-                  className="absolute inset-0 w-full h-full object-contain"
+                  className="w-full h-full object-contain"
                 />
               )}
             </div>
-            <div className="p-3">
+            <div className="p-3 text-center">
               <h3 className="text-sm font-semibold mb-2">Design #{item.design_number}</h3>
               {item.description && (
                 <p className="text-brand-quaternary mb-2 text-xs line-clamp-2">{item.description}</p>
