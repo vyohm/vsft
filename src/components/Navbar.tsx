@@ -13,7 +13,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
             <Image
-              src="/assets/images/sft-logo.png"
+              src="/assets/images/logo-sft.jpeg"
               alt="SFT Logo"
               width={80}
               height={80}
