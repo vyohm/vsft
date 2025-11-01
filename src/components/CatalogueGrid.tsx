@@ -74,7 +74,7 @@ export default function CatalogueGrid() {
             key={item.id}
             className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl active:scale-95 transition-all"
           >
-            <div className="relative w-full aspect-[3/4] bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-2">
+            <div className="relative w-full aspect-[2/3] bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-1">
               {(item.photoshoot_url || item.image_url) && (
                 <img
                   src={item.photoshoot_url || item.image_url}
