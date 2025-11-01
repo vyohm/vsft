@@ -4,6 +4,9 @@ import '@/styles/globals.css'
 export const metadata: Metadata = {
   title: 'SFT | Fashion Brand',
   description: 'Elevate Your Style with SFT',
+  icons: {
+    icon: '/icon.jpeg',
+  },
 }
 
 export default function RootLayout({
