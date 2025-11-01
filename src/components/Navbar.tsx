@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 
 export default function Navbar() {
@@ -10,8 +11,14 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-brand-primary shadow-lg">
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <Link href="/" className="text-brand-light" onClick={() => setIsOpen(false)}>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-[3px]">SFT</h1>
+          <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
+            <Image
+              src="/assets/images/sft-logo.png"
+              alt="SFT Logo"
+              width={80}
+              height={80}
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Mobile menu button */}
