@@ -7,7 +7,7 @@ import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
 import Link from 'next/link'
 
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 12
 
 export default function CatalogueGrid() {
   const [items, setItems] = useState<CatalogueItem[]>([])
@@ -68,34 +68,32 @@ export default function CatalogueGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
         {items.map((item) => (
           <div
             key={item.id}
-            className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl active:scale-95 transition-all"
+            className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl active:scale-95 transition-all"
           >
-            <div className="h-48 sm:h-64 lg:h-72 bg-gradient-to-br from-brand-tertiary to-brand-quaternary">
-              {item.image_url && (
+            <div className="relative w-full aspect-[2/3] bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-1">
+              {(item.photoshoot_url || item.image_url) && (
                 <img
-                  src={item.image_url}
+                  src={item.photoshoot_url || item.image_url}
                   alt={item.name || `Design ${item.design_number}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               )}
             </div>
-            <div className="p-4 sm:p-6">
-              <div className="mb-2">
-                <h3 className="text-lg sm:text-xl font-semibold">Design #{item.design_number}</h3>
-              </div>
+            <div className="p-3 text-center">
+              <h3 className="text-sm font-semibold mb-2">Design #{item.design_number}</h3>
               {item.description && (
-                <p className="text-brand-quaternary mb-3 text-sm sm:text-base line-clamp-2">{item.description}</p>
+                <p className="text-brand-quaternary mb-2 text-xs line-clamp-2">{item.description}</p>
               )}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4">
-                <span className="text-xl sm:text-2xl font-bold text-brand-secondary">
+              <div className="flex flex-col gap-2">
+                <span className="text-lg font-bold text-brand-secondary">
                   {formatPrice(item.price)}
                 </span>
-                <Link href="/order" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto bg-brand-primary text-brand-light px-5 py-2.5 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors text-sm font-medium">
+                <Link href="/order" className="w-full">
+                  <button className="w-full bg-brand-primary text-brand-light px-4 py-2 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors text-xs font-medium">
                     Order Now
                   </button>
                 </Link>
