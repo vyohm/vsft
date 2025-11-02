@@ -114,6 +114,46 @@ export class WhatsAppService {
     }
   }
 
+  async sendDocument(
+    to: string,
+    documentUrl: string,
+    filename: string,
+    caption?: string
+  ): Promise<MessageResponse> {
+    try {
+      const payload: any = {
+        messaging_product: 'whatsapp',
+        recipient_type: 'individual',
+        to: to,
+        type: 'document',
+        document: {
+          link: documentUrl,
+          filename: filename
+        }
+      }
+
+      if (caption) {
+        payload.document.caption = caption
+      }
+
+      const response = await axios({
+        method: 'POST',
+        url: `${this.baseUrl}/${this.phoneNumberId}/messages`,
+        headers: {
+          'Authorization': `Bearer ${this.token}`,
+          'Content-Type': 'application/json',
+        },
+        data: payload,
+      })
+
+      console.log('WhatsApp document sent successfully:', response.data)
+      return response.data
+    } catch (error: any) {
+      console.error('Error sending WhatsApp document:', error.response?.data || error.message)
+      throw error
+    }
+  }
+
   parseIncomingMessage(webhookBody: any): any {
     try {
       const entry = webhookBody.entry?.[0]

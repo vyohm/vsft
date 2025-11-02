@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import InvoiceSection from '@/components/InvoiceSection'
 import { supabase } from '@/lib/supabase'
 import { formatDate, formatPrice } from '@/lib/utils'
 import { notFound } from 'next/navigation'
@@ -159,6 +160,15 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
                 <span className="text-2xl font-bold">{formatPrice(order.total_amount)}</span>
               </div>
             </div>
+
+            {/* Invoice Section */}
+            <InvoiceSection
+              orderId={order.id}
+              customerId={order.customer.id}
+              isWhatsAppVerified={order.customer.is_whatsapp_verified || false}
+              invoiceSent={order.invoice_sent || false}
+              invoiceUrl={order.invoice_url}
+            />
           </div>
         </div>
       </main>
