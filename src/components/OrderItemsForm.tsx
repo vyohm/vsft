@@ -6,12 +6,15 @@ import { supabase } from '@/lib/supabase'
 import { CatalogueItem, OrderItemFormData } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
 
-interface OrderItemRow extends OrderItemFormData {
+interface OrderItemRow {
   id: string
-  catalogue_item?: CatalogueItem
-  searching?: boolean
+  design_number: string
+  quantity: number
+  color_option: 'color1' | 'color2' | 'color3' | 'all'
   size?: string
   color?: string
+  catalogue_item?: CatalogueItem
+  searching?: boolean
 }
 
 interface OrderItemsFormProps {
@@ -310,9 +313,9 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
 
                   {row.catalogue_item && (
                     <div className="p-4 bg-brand-tertiary rounded-lg">
-                      <p className="font-semibold text-lg">Design #{row.catalogue_item.design_number}</p>
+                      <p className="font-semibold text-lg">Design #{(row.catalogue_item as CatalogueItem).design_number}</p>
                       <p className="text-2xl md:text-3xl font-bold text-brand-secondary mt-1">
-                        {formatPrice(row.catalogue_item.price)}
+                        {formatPrice((row.catalogue_item as CatalogueItem).price)}
                       </p>
                     </div>
                   )}
