@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@microsoft/clarity": "^1.0.0",
     "@supabase/supabase-js": "^2.76.1",
     "axios": "^1.13.1",
     "clsx": "^2.1.1",
