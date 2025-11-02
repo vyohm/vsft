@@ -3,36 +3,60 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { CartItem } from '@/lib/types'
 
+export interface CustomerDetails {
+  name: string
+  phone_number: string
+  company_name?: string
+  gst_number?: string
+  is_whatsapp_verified?: boolean
+}
+
 interface CartContextType {
   items: CartItem[]
+  customerDetails: CustomerDetails | null
+  needsCustomerDetails: boolean
   addItem: (item: Omit<CartItem, 'quantity'> & { quantity?: number }) => void
   removeItem: (designNumber: string, size?: string, color?: string) => void
   updateQuantity: (designNumber: string, quantity: number, size?: string, color?: string) => void
   clearCart: () => void
   getTotalItems: () => number
   getTotalPrice: () => number
+  setCustomerDetails: (details: CustomerDetails) => void
+  clearCustomerDetails: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 const CART_STORAGE_KEY = 'vsft_cart'
+const CUSTOMER_STORAGE_KEY = 'vsft_customer'
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
+  const [customerDetails, setCustomerDetailsState] = useState<CustomerDetails | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
 
-  // Load cart from localStorage on mount
+  // Load cart and customer details from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem(CART_STORAGE_KEY)
-    if (stored) {
+    const storedCart = localStorage.getItem(CART_STORAGE_KEY)
+    if (storedCart) {
       try {
-        const parsed = JSON.parse(stored)
+        const parsed = JSON.parse(storedCart)
         setItems(Array.isArray(parsed) ? parsed : [])
       } catch (error) {
         console.error('Error loading cart from localStorage:', error)
         setItems([])
       }
     }
+
+    const storedCustomer = localStorage.getItem(CUSTOMER_STORAGE_KEY)
+    if (storedCustomer) {
+      try {
+        setCustomerDetailsState(JSON.parse(storedCustomer))
+      } catch (error) {
+        console.error('Error loading customer details from localStorage:', error)
+      }
+    }
+
     setIsInitialized(true)
   }, [])
 
@@ -42,6 +66,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
     }
   }, [items, isInitialized])
+
+  // Save customer details to localStorage whenever they change
+  useEffect(() => {
+    if (isInitialized) {
+      if (customerDetails) {
+        localStorage.setItem(CUSTOMER_STORAGE_KEY, JSON.stringify(customerDetails))
+      } else {
+        localStorage.removeItem(CUSTOMER_STORAGE_KEY)
+      }
+    }
+  }, [customerDetails, isInitialized])
 
   const addItem = (item: Omit<CartItem, 'quantity'> & { quantity?: number }) => {
     setItems(prevItems => {
@@ -121,14 +156,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return items.reduce((total, item) => total + item.unit_price * item.quantity, 0)
   }
 
+  const setCustomerDetails = (details: CustomerDetails) => {
+    setCustomerDetailsState(details)
+  }
+
+  const clearCustomerDetails = () => {
+    setCustomerDetailsState(null)
+  }
+
+  const needsCustomerDetails = items.length > 0 && !customerDetails
+
   const value: CartContextType = {
     items,
+    customerDetails,
+    needsCustomerDetails,
     addItem,
     removeItem,
     updateQuantity,
     clearCart,
     getTotalItems,
-    getTotalPrice
+    getTotalPrice,
+    setCustomerDetails,
+    clearCustomerDetails
   }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>

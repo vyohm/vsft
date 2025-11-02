@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { useCart } from '@/contexts/CartContext'
+import { useCart, CustomerDetails } from '@/contexts/CartContext'
 import { CatalogueItemWithPhotos, StockItem } from '@/lib/types'
+import CustomerDetailsModal from './CustomerDetailsModal'
 
 interface QuickAddModalProps {
   item: CatalogueItemWithPhotos & {
@@ -14,13 +15,15 @@ interface QuickAddModalProps {
 }
 
 export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
-  const { addItem } = useCart()
+  const { addItem, customerDetails, setCustomerDetails } = useCart()
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
   const [selectedColors, setSelectedColors] = useState<string[]>([])
   const [quantity, setQuantity] = useState(1)
   const [customSize, setCustomSize] = useState('')
   const [customColor, setCustomColor] = useState('')
   const [error, setError] = useState<string>('')
+  const [showCustomerModal, setShowCustomerModal] = useState(false)
+  const [pendingCartItems, setPendingCartItems] = useState<any[]>([])
 
   const toggleSize = (size: string) => {
     setSelectedSizes(prev =>
@@ -63,9 +66,10 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
     const sizes = selectedSizes.length > 0 ? selectedSizes : ['']
     const colors = selectedColors.length > 0 ? selectedColors : ['']
 
+    const itemsToAdd: any[] = []
     sizes.forEach(size => {
       colors.forEach(color => {
-        addItem({
+        itemsToAdd.push({
           design_number: item.design_number,
           catalogue_item_id: item.id,
           unit_price: item.price,
@@ -79,6 +83,34 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
       })
     })
 
+    // Check if customer details are needed
+    if (!customerDetails) {
+      // Save items to add them later after customer details are provided
+      setPendingCartItems(itemsToAdd)
+      setShowCustomerModal(true)
+      return
+    }
+
+    // Add all items to cart
+    itemsToAdd.forEach(cartItem => addItem(cartItem))
+    onClose()
+  }
+
+  const handleCustomerDetailsSubmit = async (details: CustomerDetails, verifyNow: boolean) => {
+    // Save customer details
+    setCustomerDetails({ ...details, is_whatsapp_verified: false })
+
+    // If verify now, send verification code
+    if (verifyNow) {
+      // For now, just save as unverified. The verification will happen after order is placed.
+      // We'll implement sending verification code in the next step
+    }
+
+    // Add pending items to cart
+    pendingCartItems.forEach(cartItem => addItem(cartItem))
+
+    // Close modals
+    setShowCustomerModal(false)
     onClose()
   }
 
@@ -302,6 +334,14 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
           </div>
         </div>
       </div>
+
+      {/* Customer Details Modal */}
+      {showCustomerModal && (
+        <CustomerDetailsModal
+          onSubmit={handleCustomerDetailsSubmit}
+          onClose={() => setShowCustomerModal(false)}
+        />
+      )}
     </div>
   )
 }

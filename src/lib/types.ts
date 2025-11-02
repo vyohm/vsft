@@ -36,6 +36,9 @@ export interface Customer {
   gst_number?: string
   phone_number: string
   phone_verified: boolean
+  is_whatsapp_verified?: boolean
+  whatsapp_verified_at?: string
+  verification_code?: string
   created_at?: string
   updated_at?: string
 }
@@ -47,6 +50,8 @@ export interface Order {
   status: 'draft' | 'submitted' | 'processing' | 'completed' | 'cancelled'
   total_amount: number
   notes?: string
+  is_whatsapp_verified?: boolean
+  whatsapp_verified_at?: string
   created_at?: string
   updated_at?: string
 }
