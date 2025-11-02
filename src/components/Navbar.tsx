@@ -3,9 +3,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { useCart } from '@/contexts/CartContext'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const { getTotalItems } = useCart()
+  const cartCount = getTotalItems()
 
   return (
     <header className="sticky top-0 z-50 bg-brand-primary shadow-lg">
@@ -67,9 +70,14 @@ export default function Navbar() {
             <li>
               <Link
                 href="/order"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm inline-flex items-center gap-2"
               >
                 Order
+                {cartCount > 0 && (
+                  <span className="bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 min-w-[20px] px-1.5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </Link>
             </li>
             <li>
@@ -126,9 +134,14 @@ export default function Navbar() {
                 <Link
                   href="/order"
                   onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
+                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2 relative"
                 >
                   Place Order
+                  {cartCount > 0 && (
+                    <span className="ml-2 inline-flex bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 w-5 items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
               </li>
               <li>
