@@ -60,14 +60,25 @@ function generateVariations(designNumber: string): string[] {
 export default function CatalogueGrid() {
   const [items, setItems] = useState<ItemWithStock[]>([])
   const [loading, setLoading] = useState(true)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalCount, setTotalCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('')
   const [colorFilter, setColorFilter] = useState('')
   const [sizeFilter, setSizeFilter] = useState('')
   const [quickAddItem, setQuickAddItem] = useState<ItemWithStock | null>(null)
   const [availableColors, setAvailableColors] = useState<string[]>([])
   const [availableSizes, setAvailableSizes] = useState<string[]>([])
+
+  // Debounce search query
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery)
+    }, 500) // Wait 500ms after user stops typing
+
+    return () => clearTimeout(timer)
+  }, [searchQuery])
 
   useEffect(() => {
     async function fetchItems() {
@@ -76,11 +87,18 @@ export default function CatalogueGrid() {
         const from = (currentPage - 1) * ITEMS_PER_PAGE
         const to = from + ITEMS_PER_PAGE - 1
 
-        // Fetch ALL catalogue items first to sort them properly
-        const { data: allItems, error: allItemsError } = await supabase
+        // Build query with search filter
+        let query = supabase
           .from('catalogue_items')
           .select('id')
           .eq('is_active', true)
+
+        // Apply search filter at database level
+        if (debouncedSearchQuery) {
+          query = query.ilike('design_number', `%${debouncedSearchQuery}%`)
+        }
+
+        const { data: allItems, error: allItemsError } = await query
 
         if (allItemsError) throw allItemsError
 
@@ -203,6 +221,7 @@ export default function CatalogueGrid() {
 
         setItems(itemsWithPhotos)
         setTotalCount(count)
+        setIsInitialLoad(false)
 
         // Get all unique color names for dropdown
         const { data: colorPhotos } = await supabase
@@ -234,23 +253,21 @@ export default function CatalogueGrid() {
     }
 
     fetchItems()
-  }, [currentPage])
+  }, [currentPage, debouncedSearchQuery])
 
-  // Get filtered items based on search
+  // Get filtered items based on color and size (search now happens server-side)
   const filteredItems = items.filter(item => {
-    const matchesSearch = !searchQuery ||
-      item.design_number.toLowerCase().includes(searchQuery.toLowerCase())
-
     const matchesColor = !colorFilter ||
       item.photos?.some(p => p.color_name?.toLowerCase().includes(colorFilter.toLowerCase()))
 
     const matchesSize = !sizeFilter ||
       item.availableSizes?.includes(sizeFilter)
 
-    return matchesSearch && matchesColor && matchesSize
+    return matchesColor && matchesSize
   })
 
-  if (loading) {
+  // Only show loading screen on initial load, not on subsequent searches
+  if (isInitialLoad && loading) {
     return (
       <div className="text-center py-12">
         <p className="text-xl text-brand-quaternary">Loading catalogue...</p>
@@ -277,6 +294,13 @@ export default function CatalogueGrid() {
 
   return (
     <>
+      {/* Loading indicator for background updates */}
+      {loading && !isInitialLoad && (
+        <div className="mb-4 p-3 bg-blue-50 border-2 border-blue-200 rounded-lg text-blue-700 text-sm text-center">
+          Searching...
+        </div>
+      )}
+
       {/* Search and Filter */}
       <div className="mb-6 flex flex-col md:flex-row gap-4">
         <div className="flex-1">
