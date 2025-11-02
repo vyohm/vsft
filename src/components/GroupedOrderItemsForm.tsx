@@ -3,14 +3,13 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/contexts/CartContext'
-import { CartItem } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
 
 interface GroupedItem {
   design_number: string
   unit_price: number
   image_url?: string
-  catalogue_item_id: string
+  catalogue_item_id: number
   variants: Array<{
     size?: string
     color?: string
