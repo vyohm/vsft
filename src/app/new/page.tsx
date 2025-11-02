@@ -12,14 +12,17 @@ export default function NewOrderPage() {
     if (hasCleared.current) return
     hasCleared.current = true
 
-    // Clear all cart and customer data
+    // Clear localStorage directly to ensure it persists across hard navigation
+    localStorage.removeItem('vsft_cart')
+    localStorage.removeItem('vsft_customer')
+
+    // Also clear the context state
     clearAll()
 
-    // Longer delay to ensure state updates complete
-    // Then do a hard navigation to ensure fresh state
+    // Small delay then hard navigate to ensure fresh state
     setTimeout(() => {
       window.location.href = '/order'
-    }, 300)
+    }, 100)
   }, [])
 
   return (
