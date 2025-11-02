@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useCart, CustomerDetails } from '@/contexts/CartContext'
 import { CatalogueItemWithPhotos, StockItem } from '@/lib/types'
 import CustomerDetailsModal from './CustomerDetailsModal'
@@ -15,6 +16,7 @@ interface QuickAddModalProps {
 }
 
 export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
+  const router = useRouter()
   const { addItem, customerDetails, setCustomerDetails } = useCart()
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
   const [selectedColors, setSelectedColors] = useState<string[]>([])
@@ -24,6 +26,7 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
   const [error, setError] = useState<string>('')
   const [showCustomerModal, setShowCustomerModal] = useState(false)
   const [pendingCartItems, setPendingCartItems] = useState<any[]>([])
+  const [needsOrderStart, setNeedsOrderStart] = useState(false)
 
   const toggleSize = (size: string) => {
     setSelectedSizes(prev =>
@@ -56,6 +59,12 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
   }
 
   const handleAddToCart = () => {
+    // Check if customer details exist first
+    if (!customerDetails) {
+      setNeedsOrderStart(true)
+      return
+    }
+
     // Validate at least one size or color is selected
     if (selectedSizes.length === 0 && selectedColors.length === 0) {
       setError('Please select at least one size or color')
@@ -83,17 +92,13 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
       })
     })
 
-    // Check if customer details are needed
-    if (!customerDetails) {
-      // Save items to add them later after customer details are provided
-      setPendingCartItems(itemsToAdd)
-      setShowCustomerModal(true)
-      return
-    }
-
     // Add all items to cart
     itemsToAdd.forEach(cartItem => addItem(cartItem))
     onClose()
+  }
+
+  const handleStartOrder = () => {
+    router.push('/order')
   }
 
   const handleCustomerDetailsSubmit = async (details: CustomerDetails, verifyNow: boolean) => {
@@ -341,6 +346,32 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
           onSubmit={handleCustomerDetailsSubmit}
           onClose={() => setShowCustomerModal(false)}
         />
+      )}
+
+      {/* Start Order Modal */}
+      {needsOrderStart && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-xl font-bold mb-4 text-brand-primary">Start Your Order First</h3>
+            <p className="text-brand-quaternary mb-6">
+              Before adding items to your cart, you need to start an order and provide your details.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={handleStartOrder}
+                className="flex-1 bg-brand-primary text-white px-6 py-3 rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors font-semibold"
+              >
+                Start Order
+              </button>
+              <button
+                onClick={() => setNeedsOrderStart(false)}
+                className="flex-1 bg-brand-quaternary text-white px-6 py-3 rounded-lg hover:opacity-80 transition-opacity font-semibold"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

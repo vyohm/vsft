@@ -112,22 +112,33 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
                     className="flex items-center justify-between p-4 bg-brand-tertiary rounded-lg"
                   >
                     <div className="flex items-center gap-4 flex-1">
-                      <div className="w-16 h-16 bg-gradient-to-br from-brand-tertiary to-brand-quaternary rounded-lg">
-                        {item.catalogue_item?.image_url && (
+                      {item.image_url && (
+                        <div className="w-20 h-28 bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-1 rounded-lg flex-shrink-0">
                           <img
-                            src={item.catalogue_item.image_url}
-                            alt={item.catalogue_item.name}
-                            className="w-full h-full object-cover rounded-lg"
+                            src={item.image_url}
+                            alt={`Design ${item.design_number}`}
+                            className="w-full h-full object-contain rounded-lg"
                           />
-                        )}
-                      </div>
+                        </div>
+                      )}
                       <div className="flex-1">
                         <h3 className="font-semibold">
                           Design #{item.design_number}
                         </h3>
-                        <div className="flex gap-4 text-sm mt-1">
+                        <div className="flex gap-2 flex-wrap text-sm mt-1">
+                          {item.size && (
+                            <span className="px-2 py-1 bg-brand-primary text-white rounded-full text-xs">
+                              Size: {item.size}
+                            </span>
+                          )}
+                          {item.color && (
+                            <span className="px-2 py-1 bg-brand-secondary text-white rounded-full text-xs">
+                              Color: {item.color}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex gap-4 text-sm mt-2 text-brand-quaternary">
                           <span>Qty: {item.quantity}</span>
-                          <span>Color: {item.color_option}</span>
                           <span>{formatPrice(item.unit_price)} each</span>
                         </div>
                       </div>
