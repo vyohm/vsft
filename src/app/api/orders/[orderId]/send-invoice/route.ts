@@ -77,13 +77,23 @@ export async function POST(
 
     // Generate PDF
     console.log('Generating invoice PDF...')
-    const pdfBuffer = await invoiceService.generateInvoice(invoiceData)
+    let pdfBuffer
+    try {
+      pdfBuffer = await invoiceService.generateInvoice(invoiceData)
+      console.log('PDF generated successfully, size:', pdfBuffer.length, 'bytes')
+    } catch (pdfError: any) {
+      console.error('PDF generation error:', pdfError)
+      return NextResponse.json(
+        { error: 'Failed to generate PDF', details: pdfError.message },
+        { status: 500 }
+      )
+    }
 
     // Upload to Supabase Storage
     const filename = `invoice-${invoiceData.orderNumber}-${Date.now()}.pdf`
     const filePath = `${orderId}/${filename}`
 
-    console.log('Uploading PDF to storage...')
+    console.log('Uploading PDF to storage...', { filename, filePath })
     const { error: uploadError } = await supabase.storage
       .from('invoices')
       .upload(filePath, pdfBuffer, {
@@ -93,7 +103,10 @@ export async function POST(
 
     if (uploadError) {
       console.error('Upload error:', uploadError)
-      throw uploadError
+      return NextResponse.json(
+        { error: 'Failed to upload PDF', details: uploadError.message },
+        { status: 500 }
+      )
     }
 
     // Get public URL
