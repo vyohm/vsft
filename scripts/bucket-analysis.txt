@@ -1,0 +1,2052 @@
+🔍 Analyzing photos in wotbot project...
+
+📦 Bucket: test-buck
+📁 Folder: photoshoots-colored
+
+✅ Found 165 files
+
+================================================================================
+
+1. NK0005-TBLUE.png
+   Size: 1298207.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0005-TBLUE.png
+   → Detected: Design #NK0005, Color: unknown
+
+2. NK005-MOVE.png
+   Size: 1360410.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK005-MOVE.png
+   → Detected: Design #NK005, Color: unknown
+
+3. NK005-TBLUE.png
+   Size: 1283579.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK005-TBLUE.png
+   → Detected: Design #NK005, Color: unknown
+
+4. NK0107-BLUE.png
+   Size: 1643382.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0107-BLUE.png
+   → Detected: Design #NK0107, Color: unknown
+
+5. NK0116-RANI.png
+   Size: 1418910.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0116-RANI.png
+   → Detected: Design #NK0116, Color: unknown
+
+6. NK0123-OFF-WHITE.png
+   Size: 1506012.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0123-OFF-WHITE.png
+   → Detected: Design #NK0123, Color: unknown
+
+7. NK0136-OFF-WHITE.png
+   Size: 1428294.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0136-OFF-WHITE.png
+   → Detected: Design #NK0136, Color: unknown
+
+8. NK0158-OFF-WHITE.png
+   Size: 1539375.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0158-OFF-WHITE.png
+   → Detected: Design #NK0158, Color: unknown
+
+9. NK0162-GREY.png
+   Size: 1328597.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0162-GREY.png
+   → Detected: Design #NK0162, Color: unknown
+
+10. NK0168-CHIKU.png
+   Size: 1190409.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0168-CHIKU.png
+   → Detected: Design #NK0168, Color: unknown
+
+11. NK0169-PEACH.png
+   Size: 1272214.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0169-PEACH.png
+   → Detected: Design #NK0169, Color: unknown
+
+12. NK0178-WINE.png
+   Size: 1419499.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0178-WINE.png
+   → Detected: Design #NK0178, Color: unknown
+
+13. NK0179-GREY.png
+   Size: 1569619.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0179-GREY.png
+   → Detected: Design #NK0179, Color: unknown
+
+14. NK0181-BLUE.png
+   Size: 1384565.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0181-BLUE.png
+   → Detected: Design #NK0181, Color: unknown
+
+15. NK0182-BLUE.png
+   Size: 1539557.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0182-BLUE.png
+   → Detected: Design #NK0182, Color: unknown
+
+16. NK0184-GREEN.png
+   Size: 1622460.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0184-GREEN.png
+   → Detected: Design #NK0184, Color: unknown
+
+17. NK0189-MOVE.png
+   Size: 1417577.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0189-MOVE.png
+   → Detected: Design #NK0189, Color: unknown
+
+18. NK0192-ONION.png
+   Size: 1427778.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0192-ONION.png
+   → Detected: Design #NK0192, Color: unknown
+
+19. NK0194-MUSTARD.png
+   Size: 1792779.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0194-MUSTARD.png
+   → Detected: Design #NK0194, Color: unknown
+
+20. NK0195-BLUE.png
+   Size: 1542218.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0195-BLUE.png
+   → Detected: Design #NK0195, Color: unknown
+
+21. NK0197-OFF-WHITE.png
+   Size: 1549878.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0197-OFF-WHITE.png
+   → Detected: Design #NK0197, Color: unknown
+
+22. NK0199-MUSTARD.png
+   Size: 1662825.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0199-MUSTARD.png
+   → Detected: Design #NK0199, Color: unknown
+
+23. NK107-BLUE.png
+   Size: 1712009.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK107-BLUE.png
+   → Detected: Design #NK107, Color: unknown
+
+24. NK107-MUSTARD.png
+   Size: 1537837.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK107-MUSTARD.png
+   → Detected: Design #NK107, Color: unknown
+
+25. NK107-RANI.png
+   Size: 1706044.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK107-RANI.png
+   → Detected: Design #NK107, Color: unknown
+
+26. NK116-PURPLE.png
+   Size: 1414608.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK116-PURPLE.png
+   → Detected: Design #NK116, Color: unknown
+
+27. NK116-RANI.png
+   Size: 1546952.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK116-RANI.png
+   → Detected: Design #NK116, Color: unknown
+
+28. NK123-PURPLE.png
+   Size: 1497065.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK123-PURPLE.png
+   → Detected: Design #NK123, Color: unknown
+
+29. NK123-RANI.png
+   Size: 1640576.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK123-RANI.png
+   → Detected: Design #NK123, Color: unknown
+
+30. NK127B-RANI.png
+   Size: 1459290.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK127B-RANI.png
+   → Detected: Design #NK127B, Color: unknown
+
+31. NK136-GREEN.png
+   Size: 1323615.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK136-GREEN.png
+   → Detected: Design #NK136, Color: unknown
+
+32. NK136-MOVE.png
+   Size: 1561226.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK136-MOVE.png
+   → Detected: Design #NK136, Color: unknown
+
+33. NK150A-BLUE.png
+   Size: 1529572.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK150A-BLUE.png
+   → Detected: Design #NK150A, Color: unknown
+
+34. NK160-MUSTARD.png
+   Size: 1514558.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK160-MUSTARD.png
+   → Detected: Design #NK160, Color: unknown
+
+35. NK178-WINE.png
+   Size: 1502682.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK178-WINE.png
+   → Detected: Design #NK178, Color: unknown
+
+36. NK179-GREY.png
+   Size: 1328686.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK179-GREY.png
+   → Detected: Design #NK179, Color: unknown
+
+37. NK179-PEACH.png
+   Size: 1327286.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK179-PEACH.png
+   → Detected: Design #NK179, Color: unknown
+
+38. RS0008-RANI.png
+   Size: 1397385.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0008-RANI.png
+   → Detected: Design #RS0008, Color: unknown
+
+39. RS0013-PINK.png
+   Size: 1346061.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0013-PINK.png
+   → Detected: Design #RS0013, Color: unknown
+
+40. RS0023-MAROON.png
+   Size: 1264068.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0023-MAROON.png
+   → Detected: Design #RS0023, Color: unknown
+
+41. RS0024-Mauve.png
+   Size: 1356931.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0024-Mauve.png
+   → Detected: Design #RS0024, Color: unknown
+
+42. RS0026-BLUE.png
+   Size: 1450382.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0026-BLUE.png
+   → Detected: Design #RS0026, Color: unknown
+
+43. RS0027-OFF-WHITE.png
+   Size: 1452904.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0027-OFF-WHITE.png
+   → Detected: Design #RS0027, Color: unknown
+
+44. RS0028-YELLOW.png
+   Size: 1401020.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0028-YELLOW.png
+   → Detected: Design #RS0028, Color: unknown
+
+45. RS0032-PEACH.png
+   Size: 1533966.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0032-PEACH.png
+   → Detected: Design #RS0032, Color: unknown
+
+46. RS0034-MUSTARD.png
+   Size: 1603355.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0034-MUSTARD.png
+   → Detected: Design #RS0034, Color: unknown
+
+47. RS0035-RANI.png
+   Size: 1359035.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0035-RANI.png
+   → Detected: Design #RS0035, Color: unknown
+
+48. RS008-ONION.png
+   Size: 1404782.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS008-ONION.png
+   → Detected: Design #RS008, Color: unknown
+
+49. RS013-OFF-WHITE.png
+   Size: 1497668.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS013-OFF-WHITE.png
+   → Detected: Design #RS013, Color: unknown
+
+50. RS013-PINK.png
+   Size: 1371064.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS013-PINK.png
+   → Detected: Design #RS013, Color: unknown
+
+51. RS023-MAROON.png
+   Size: 1434499.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS023-MAROON.png
+   → Detected: Design #RS023, Color: unknown
+
+52. RS024-Mauve.png
+   Size: 1221898.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS024-Mauve.png
+   → Detected: Design #RS024, Color: unknown
+
+53. RS026-BLUE.png
+   Size: 1682476.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS026-BLUE.png
+   → Detected: Design #RS026, Color: unknown
+
+54. RS027-OFF-WHITE.png
+   Size: 1451213.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS027-OFF-WHITE.png
+   → Detected: Design #RS027, Color: unknown
+
+55. RS028-YELLOW.png
+   Size: 1480060.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS028-YELLOW.png
+   → Detected: Design #RS028, Color: unknown
+
+56. RS032-PEACH.png
+   Size: 1314189.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS032-PEACH.png
+   → Detected: Design #RS032, Color: unknown
+
+57. RS034-MUSTARD.png
+   Size: 1866414.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS034-MUSTARD.png
+   → Detected: Design #RS034, Color: unknown
+
+58. RS035-GREEN.png
+   Size: 1384683.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS035-GREEN.png
+   → Detected: Design #RS035, Color: unknown
+
+59. RS035-PURPLE.png
+   Size: 1656051.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS035-PURPLE.png
+   → Detected: Design #RS035, Color: unknown
+
+60. SF1050-PEACH.png
+   Size: 1515832.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1050-PEACH.png
+   → Detected: Design #SF1050, Color: unknown
+
+61. SF1051-PURPLE.png
+   Size: 1425081.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1051-PURPLE.png
+   → Detected: Design #SF1051, Color: unknown
+
+62. SF1200-MUSTARD.png
+   Size: 1564630.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1200-MUSTARD.png
+   → Detected: Design #SF1200, Color: unknown
+
+63. SF1218-RUST.png
+   Size: 1531904.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1218-RUST.png
+   → Detected: Design #SF1218, Color: unknown
+
+64. SF1313-ONION.png
+   Size: 1270088.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1313-ONION.png
+   → Detected: Design #SF1313, Color: unknown
+
+65. SF1434-BLUE.png
+   Size: 1399369.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1434-BLUE.png
+   → Detected: Design #SF1434, Color: unknown
+
+66. SF1451-OFF-WHITE.png
+   Size: 1342551.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1451-OFF-WHITE.png
+   → Detected: Design #SF1451, Color: unknown
+
+67. SF1471-MOVE.png
+   Size: 1416686.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1471-MOVE.png
+   → Detected: Design #SF1471, Color: unknown
+
+68. SF1488-GREEN.png
+   Size: 1526056.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1488-GREEN.png
+   → Detected: Design #SF1488, Color: unknown
+
+69. SF1509-GAJRI.png
+   Size: 1106528.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1509-GAJRI.png
+   → Detected: Design #SF1509, Color: unknown
+
+70. SF1519-OFF-WHITE.png
+   Size: 1401955.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1519-OFF-WHITE.png
+   → Detected: Design #SF1519, Color: unknown
+
+71. SF1540-RANI.png
+   Size: 1397496.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1540-RANI.png
+   → Detected: Design #SF1540, Color: unknown
+
+72. SF1541-GREY.png
+   Size: 1473570.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1541-GREY.png
+   → Detected: Design #SF1541, Color: unknown
+
+73. SF1550-OFF-WHITE.png
+   Size: 1340792.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1550-OFF-WHITE.png
+   → Detected: Design #SF1550, Color: unknown
+
+74. SF1556-GREEN.png
+   Size: 1614855.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1556-GREEN.png
+   → Detected: Design #SF1556, Color: unknown
+
+75. SF1561-WINE.png
+   Size: 1625436.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1561-WINE.png
+   → Detected: Design #SF1561, Color: unknown
+
+76. SF1563-BROWN.png
+   Size: 1678043.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1563-BROWN.png
+   → Detected: Design #SF1563, Color: unknown
+
+77. SF1563-MOVE.png
+   Size: 1526745.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1563-MOVE.png
+   → Detected: Design #SF1563, Color: unknown
+
+78. SF1564-MUSTARD.png
+   Size: 1293088.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1564-MUSTARD.png
+   → Detected: Design #SF1564, Color: unknown
+
+79. SF1566-BROWN.png
+   Size: 1579860.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1566-BROWN.png
+   → Detected: Design #SF1566, Color: unknown
+
+80. SF1566-WINE.png
+   Size: 1431653.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1566-WINE.png
+   → Detected: Design #SF1566, Color: unknown
+
+81. SF1610-GREEN.png
+   Size: 1366171.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1610-GREEN.png
+   → Detected: Design #SF1610, Color: unknown
+
+82. SF1610-PEACH.png
+   Size: 1538192.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1610-PEACH.png
+   → Detected: Design #SF1610, Color: unknown
+
+83. SF1610-TBLUE.png
+   Size: 1335055.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1610-TBLUE.png
+   → Detected: Design #SF1610, Color: unknown
+
+84. SF1617-BLUE.png
+   Size: 1442150.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-BLUE.png
+   → Detected: Design #SF1617, Color: unknown
+
+85. SF1617-OFF-WHITE.png
+   Size: 1618302.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-OFF-WHITE.png
+   → Detected: Design #SF1617, Color: unknown
+
+86. SF1617-PURPLE.png
+   Size: 1333696.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-PURPLE.png
+   → Detected: Design #SF1617, Color: unknown
+
+87. SF1617-RANI.png
+   Size: 1576095.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-RANI.png
+   → Detected: Design #SF1617, Color: unknown
+
+88. SF1620-RANI.png
+   Size: 1373958.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1620-RANI.png
+   → Detected: Design #SF1620, Color: unknown
+
+89. SF1625-PEACH.png
+   Size: 1634423.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1625-PEACH.png
+   → Detected: Design #SF1625, Color: unknown
+
+90. SF1625-TBLUE.png
+   Size: 1337039.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1625-TBLUE.png
+   → Detected: Design #SF1625, Color: unknown
+
+91. SF1627-GREEN.png
+   Size: 1629546.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1627-GREEN.png
+   → Detected: Design #SF1627, Color: unknown
+
+92. SF1627-PEACH.png
+   Size: 1455533.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1627-PEACH.png
+   → Detected: Design #SF1627, Color: unknown
+
+93. SF1627-TBLUE.png
+   Size: 1303409.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1627-TBLUE.png
+   → Detected: Design #SF1627, Color: unknown
+
+94. SF1629-BEIGE.png
+   Size: 1400169.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1629-BEIGE.png
+   → Detected: Design #SF1629, Color: unknown
+
+95. SF1633-LEMON.png
+   Size: 1378547.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1633-LEMON.png
+   → Detected: Design #SF1633, Color: unknown
+
+96. SF1633-MOVE.png
+   Size: 1696588.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1633-MOVE.png
+   → Detected: Design #SF1633, Color: unknown
+
+97. SF1634-GREEN.png
+   Size: 1536795.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1634-GREEN.png
+   → Detected: Design #SF1634, Color: unknown
+
+98. SF1634-MOVE.png
+   Size: 1163767.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1634-MOVE.png
+   → Detected: Design #SF1634, Color: unknown
+
+99. SF1634-ORANGE.png
+   Size: 1464641.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1634-ORANGE.png
+   → Detected: Design #SF1634, Color: unknown
+
+100. SF1636-GREEN.png
+   Size: 1435995.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1636-GREEN.png
+   → Detected: Design #SF1636, Color: unknown
+
+101. SF1636-MOVE.png
+   Size: 1509594.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1636-MOVE.png
+   → Detected: Design #SF1636, Color: unknown
+
+102. SF1644-GREEN.png
+   Size: 1391717.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1644-GREEN.png
+   → Detected: Design #SF1644, Color: unknown
+
+103. SF1644-PURPLE.png
+   Size: 1542856.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1644-PURPLE.png
+   → Detected: Design #SF1644, Color: unknown
+
+104. SF1650-GREEN.png
+   Size: 1641772.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1650-GREEN.png
+   → Detected: Design #SF1650, Color: unknown
+
+105. SF1650-MUSTARD.png
+   Size: 1386325.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1650-MUSTARD.png
+   → Detected: Design #SF1650, Color: unknown
+
+106. SF1662-GREEN.png
+   Size: 1430460.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1662-GREEN.png
+   → Detected: Design #SF1662, Color: unknown
+
+107. SF1662-PURPLE.png
+   Size: 1695211.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1662-PURPLE.png
+   → Detected: Design #SF1662, Color: unknown
+
+108. SF1662-RANI.png
+   Size: 1441397.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1662-RANI.png
+   → Detected: Design #SF1662, Color: unknown
+
+109. SF1669-GREEN.png
+   Size: 1349089.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1669-GREEN.png
+   → Detected: Design #SF1669, Color: unknown
+
+110. SF1669-Mauve.png
+   Size: 1312005.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1669-Mauve.png
+   → Detected: Design #SF1669, Color: unknown
+
+111. SF1669-TBLUE.png
+   Size: 1544485.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1669-TBLUE.png
+   → Detected: Design #SF1669, Color: unknown
+
+112. SF1670-GREEN.png
+   Size: 1676746.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1670-GREEN.png
+   → Detected: Design #SF1670, Color: unknown
+
+113. SF1670-PINK.png
+   Size: 1466179.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1670-PINK.png
+   → Detected: Design #SF1670, Color: unknown
+
+114. SF1671-GREEN.png
+   Size: 1499856.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1671-GREEN.png
+   → Detected: Design #SF1671, Color: unknown
+
+115. SF1671-LEMON.png
+   Size: 1618311.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1671-LEMON.png
+   → Detected: Design #SF1671, Color: unknown
+
+116. SF1686-GREEN.png
+   Size: 1485789.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1686-GREEN.png
+   → Detected: Design #SF1686, Color: unknown
+
+117. SF1686-PURPLE.png
+   Size: 1668325.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1686-PURPLE.png
+   → Detected: Design #SF1686, Color: unknown
+
+118. SF1693-GREY.png
+   Size: 1362174.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1693-GREY.png
+   → Detected: Design #SF1693, Color: unknown
+
+119. SF1693-LEMON.png
+   Size: 1417252.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1693-LEMON.png
+   → Detected: Design #SF1693, Color: unknown
+
+120. SF1693-PEACH.png
+   Size: 1266366.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1693-PEACH.png
+   → Detected: Design #SF1693, Color: unknown
+
+121. SF1698-PEACH.png
+   Size: 1427634.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1698-PEACH.png
+   → Detected: Design #SF1698, Color: unknown
+
+122. SF1698-TBLUE.png
+   Size: 1232023.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1698-TBLUE.png
+   → Detected: Design #SF1698, Color: unknown
+
+123. SF1701-BLUE.png
+   Size: 1704978.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1701-BLUE.png
+   → Detected: Design #SF1701, Color: unknown
+
+124. SF1701-GREEN.png
+   Size: 1544353.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1701-GREEN.png
+   → Detected: Design #SF1701, Color: unknown
+
+125. SF1701-WINE.png
+   Size: 1499123.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1701-WINE.png
+   → Detected: Design #SF1701, Color: unknown
+
+126. SF1708-OFF-WHITE.png
+   Size: 1307898.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1708-OFF-WHITE.png
+   → Detected: Design #SF1708, Color: unknown
+
+127. SF1708-TBLUE.png
+   Size: 1474250.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1708-TBLUE.png
+   → Detected: Design #SF1708, Color: unknown
+
+128. SF1718-MUSTARD.png
+   Size: 1436667.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1718-MUSTARD.png
+   → Detected: Design #SF1718, Color: unknown
+
+129. SF1726-BLUE.png
+   Size: 1321458.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1726-BLUE.png
+   → Detected: Design #SF1726, Color: unknown
+
+130. SF1726-OFF-WHITE.png
+   Size: 1602703.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1726-OFF-WHITE.png
+   → Detected: Design #SF1726, Color: unknown
+
+131. SF1726-PURPLE.png
+   Size: 1450075.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1726-PURPLE.png
+   → Detected: Design #SF1726, Color: unknown
+
+132. SF1733-BLACK.png
+   Size: 1278722.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1733-BLACK.png
+   → Detected: Design #SF1733, Color: unknown
+
+133. SF1734-GREEN.png
+   Size: 1585389.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1734-GREEN.png
+   → Detected: Design #SF1734, Color: unknown
+
+134. SF1738-OFF-WHITE.png
+   Size: 1403990.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1738-OFF-WHITE.png
+   → Detected: Design #SF1738, Color: unknown
+
+135. SF1738-PINK.png
+   Size: 1440274.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1738-PINK.png
+   → Detected: Design #SF1738, Color: unknown
+
+136. SF1741-PURPLE.png
+   Size: 1585601.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1741-PURPLE.png
+   → Detected: Design #SF1741, Color: unknown
+
+137. SF1742-BLUE.png
+   Size: 1403288.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1742-BLUE.png
+   → Detected: Design #SF1742, Color: unknown
+
+138. SF1745-RANI.png
+   Size: 1513658.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1745-RANI.png
+   → Detected: Design #SF1745, Color: unknown
+
+139. SF1753-GREEN.png
+   Size: 1311006.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1753-GREEN.png
+   → Detected: Design #SF1753, Color: unknown
+
+140. SF1755-PURPLE.png
+   Size: 1655642.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1755-PURPLE.png
+   → Detected: Design #SF1755, Color: unknown
+
+141. SF1757-GREEN.png
+   Size: 1448088.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1757-GREEN.png
+   → Detected: Design #SF1757, Color: unknown
+
+142. SF1758-PURPLE.png
+   Size: 1470710.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1758-PURPLE.png
+   → Detected: Design #SF1758, Color: unknown
+
+143. SF1759-GREY.png
+   Size: 1629783.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1759-GREY.png
+   → Detected: Design #SF1759, Color: unknown
+
+144. SF1766-PURPLE.png
+   Size: 1223392.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1766-PURPLE.png
+   → Detected: Design #SF1766, Color: unknown
+
+145. SF1767-RED.png
+   Size: 1569667.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1767-RED.png
+   → Detected: Design #SF1767, Color: unknown
+
+146. SF1772-PURPLE.png
+   Size: 1484125.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1772-PURPLE.png
+   → Detected: Design #SF1772, Color: unknown
+
+147. SF1773-PEACH.png
+   Size: 1557645.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1773-PEACH.png
+   → Detected: Design #SF1773, Color: unknown
+
+148. SF1775-BLUE.png
+   Size: 1365852.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1775-BLUE.png
+   → Detected: Design #SF1775, Color: unknown
+
+149. SF1777-OFF-WHITE.png
+   Size: 1419485.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1777-OFF-WHITE.png
+   → Detected: Design #SF1777, Color: unknown
+
+150. SF1780-OFF-WHITE.png
+   Size: 1462828.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1780-OFF-WHITE.png
+   → Detected: Design #SF1780, Color: unknown
+
+151. SF1781-MUSTARD.png
+   Size: 1491972.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1781-MUSTARD.png
+   → Detected: Design #SF1781, Color: unknown
+
+152. SF1783-RANI.png
+   Size: 1404240.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1783-RANI.png
+   → Detected: Design #SF1783, Color: unknown
+
+153. SF1791-GREEN.png
+   Size: 1294955.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1791-GREEN.png
+   → Detected: Design #SF1791, Color: unknown
+
+154. SF1793-GREY.png
+   Size: 1601040.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1793-GREY.png
+   → Detected: Design #SF1793, Color: unknown
+
+155. SF1798-ONION.png
+   Size: 1626295.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1798-ONION.png
+   → Detected: Design #SF1798, Color: unknown
+
+156. SF1800-LEMON.png
+   Size: 1707576.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1800-LEMON.png
+   → Detected: Design #SF1800, Color: unknown
+
+157. SF1801-BEIGE.png
+   Size: 1416483.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1801-BEIGE.png
+   → Detected: Design #SF1801, Color: unknown
+
+158. SF1802-YELLOW.png
+   Size: 1449743.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1802-YELLOW.png
+   → Detected: Design #SF1802, Color: unknown
+
+159. SF1803-LEMON.png
+   Size: 1970757.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1803-LEMON.png
+   → Detected: Design #SF1803, Color: unknown
+
+160. SF1806-BLUE.png
+   Size: 1464226.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1806-BLUE.png
+   → Detected: Design #SF1806, Color: unknown
+
+161. SF1808-MOUSE.png
+   Size: 1439446.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1808-MOUSE.png
+   → Detected: Design #SF1808, Color: unknown
+
+162. SF1809-GREEN.png
+   Size: 1674489.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1809-GREEN.png
+   → Detected: Design #SF1809, Color: unknown
+
+163. SF1810-BEIGE.png
+   Size: 1587497.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1810-BEIGE.png
+   → Detected: Design #SF1810, Color: unknown
+
+164. SF1811-BLUE.png
+   Size: 1499289.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1811-BLUE.png
+   → Detected: Design #SF1811, Color: unknown
+
+165. SF589A-WINE.png
+   Size: 1595991.00 KB
+   URL: https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF589A-WINE.png
+   → Detected: Design #SF589A, Color: unknown
+
+================================================================================
+
+📊 SUMMARY
+
+Total files: 165
+Unique designs detected: 124
+
+🎨 Designs with multiple colors:
+
+  Design #NK005 (2 photos):
+    - unknown: NK005-MOVE.png
+    - unknown: NK005-TBLUE.png
+
+  Design #NK107 (3 photos):
+    - unknown: NK107-BLUE.png
+    - unknown: NK107-MUSTARD.png
+    - unknown: NK107-RANI.png
+
+  Design #NK116 (2 photos):
+    - unknown: NK116-PURPLE.png
+    - unknown: NK116-RANI.png
+
+  Design #NK123 (2 photos):
+    - unknown: NK123-PURPLE.png
+    - unknown: NK123-RANI.png
+
+  Design #NK136 (2 photos):
+    - unknown: NK136-GREEN.png
+    - unknown: NK136-MOVE.png
+
+  Design #NK179 (2 photos):
+    - unknown: NK179-GREY.png
+    - unknown: NK179-PEACH.png
+
+  Design #RS013 (2 photos):
+    - unknown: RS013-OFF-WHITE.png
+    - unknown: RS013-PINK.png
+
+  Design #RS035 (2 photos):
+    - unknown: RS035-GREEN.png
+    - unknown: RS035-PURPLE.png
+
+  Design #SF1563 (2 photos):
+    - unknown: SF1563-BROWN.png
+    - unknown: SF1563-MOVE.png
+
+  Design #SF1566 (2 photos):
+    - unknown: SF1566-BROWN.png
+    - unknown: SF1566-WINE.png
+
+  Design #SF1610 (3 photos):
+    - unknown: SF1610-GREEN.png
+    - unknown: SF1610-PEACH.png
+    - unknown: SF1610-TBLUE.png
+
+  Design #SF1617 (4 photos):
+    - unknown: SF1617-BLUE.png
+    - unknown: SF1617-OFF-WHITE.png
+    - unknown: SF1617-PURPLE.png
+    - unknown: SF1617-RANI.png
+
+  Design #SF1625 (2 photos):
+    - unknown: SF1625-PEACH.png
+    - unknown: SF1625-TBLUE.png
+
+  Design #SF1627 (3 photos):
+    - unknown: SF1627-GREEN.png
+    - unknown: SF1627-PEACH.png
+    - unknown: SF1627-TBLUE.png
+
+  Design #SF1633 (2 photos):
+    - unknown: SF1633-LEMON.png
+    - unknown: SF1633-MOVE.png
+
+  Design #SF1634 (3 photos):
+    - unknown: SF1634-GREEN.png
+    - unknown: SF1634-MOVE.png
+    - unknown: SF1634-ORANGE.png
+
+  Design #SF1636 (2 photos):
+    - unknown: SF1636-GREEN.png
+    - unknown: SF1636-MOVE.png
+
+  Design #SF1644 (2 photos):
+    - unknown: SF1644-GREEN.png
+    - unknown: SF1644-PURPLE.png
+
+  Design #SF1650 (2 photos):
+    - unknown: SF1650-GREEN.png
+    - unknown: SF1650-MUSTARD.png
+
+  Design #SF1662 (3 photos):
+    - unknown: SF1662-GREEN.png
+    - unknown: SF1662-PURPLE.png
+    - unknown: SF1662-RANI.png
+
+  Design #SF1669 (3 photos):
+    - unknown: SF1669-GREEN.png
+    - unknown: SF1669-Mauve.png
+    - unknown: SF1669-TBLUE.png
+
+  Design #SF1670 (2 photos):
+    - unknown: SF1670-GREEN.png
+    - unknown: SF1670-PINK.png
+
+  Design #SF1671 (2 photos):
+    - unknown: SF1671-GREEN.png
+    - unknown: SF1671-LEMON.png
+
+  Design #SF1686 (2 photos):
+    - unknown: SF1686-GREEN.png
+    - unknown: SF1686-PURPLE.png
+
+  Design #SF1693 (3 photos):
+    - unknown: SF1693-GREY.png
+    - unknown: SF1693-LEMON.png
+    - unknown: SF1693-PEACH.png
+
+  Design #SF1698 (2 photos):
+    - unknown: SF1698-PEACH.png
+    - unknown: SF1698-TBLUE.png
+
+  Design #SF1701 (3 photos):
+    - unknown: SF1701-BLUE.png
+    - unknown: SF1701-GREEN.png
+    - unknown: SF1701-WINE.png
+
+  Design #SF1708 (2 photos):
+    - unknown: SF1708-OFF-WHITE.png
+    - unknown: SF1708-TBLUE.png
+
+  Design #SF1726 (3 photos):
+    - unknown: SF1726-BLUE.png
+    - unknown: SF1726-OFF-WHITE.png
+    - unknown: SF1726-PURPLE.png
+
+  Design #SF1738 (2 photos):
+    - unknown: SF1738-OFF-WHITE.png
+    - unknown: SF1738-PINK.png
+
+
+📋 JSON Output (for import script):
+
+{
+  "NK0005": [
+    {
+      "file": "NK0005-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0005-TBLUE.png"
+    }
+  ],
+  "NK005": [
+    {
+      "file": "NK005-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK005-MOVE.png"
+    },
+    {
+      "file": "NK005-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK005-TBLUE.png"
+    }
+  ],
+  "NK0107": [
+    {
+      "file": "NK0107-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0107-BLUE.png"
+    }
+  ],
+  "NK0116": [
+    {
+      "file": "NK0116-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0116-RANI.png"
+    }
+  ],
+  "NK0123": [
+    {
+      "file": "NK0123-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0123-OFF-WHITE.png"
+    }
+  ],
+  "NK0136": [
+    {
+      "file": "NK0136-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0136-OFF-WHITE.png"
+    }
+  ],
+  "NK0158": [
+    {
+      "file": "NK0158-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0158-OFF-WHITE.png"
+    }
+  ],
+  "NK0162": [
+    {
+      "file": "NK0162-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0162-GREY.png"
+    }
+  ],
+  "NK0168": [
+    {
+      "file": "NK0168-CHIKU.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0168-CHIKU.png"
+    }
+  ],
+  "NK0169": [
+    {
+      "file": "NK0169-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0169-PEACH.png"
+    }
+  ],
+  "NK0178": [
+    {
+      "file": "NK0178-WINE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0178-WINE.png"
+    }
+  ],
+  "NK0179": [
+    {
+      "file": "NK0179-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0179-GREY.png"
+    }
+  ],
+  "NK0181": [
+    {
+      "file": "NK0181-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0181-BLUE.png"
+    }
+  ],
+  "NK0182": [
+    {
+      "file": "NK0182-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0182-BLUE.png"
+    }
+  ],
+  "NK0184": [
+    {
+      "file": "NK0184-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0184-GREEN.png"
+    }
+  ],
+  "NK0189": [
+    {
+      "file": "NK0189-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0189-MOVE.png"
+    }
+  ],
+  "NK0192": [
+    {
+      "file": "NK0192-ONION.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0192-ONION.png"
+    }
+  ],
+  "NK0194": [
+    {
+      "file": "NK0194-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0194-MUSTARD.png"
+    }
+  ],
+  "NK0195": [
+    {
+      "file": "NK0195-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0195-BLUE.png"
+    }
+  ],
+  "NK0197": [
+    {
+      "file": "NK0197-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0197-OFF-WHITE.png"
+    }
+  ],
+  "NK0199": [
+    {
+      "file": "NK0199-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK0199-MUSTARD.png"
+    }
+  ],
+  "NK107": [
+    {
+      "file": "NK107-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK107-BLUE.png"
+    },
+    {
+      "file": "NK107-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK107-MUSTARD.png"
+    },
+    {
+      "file": "NK107-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK107-RANI.png"
+    }
+  ],
+  "NK116": [
+    {
+      "file": "NK116-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK116-PURPLE.png"
+    },
+    {
+      "file": "NK116-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK116-RANI.png"
+    }
+  ],
+  "NK123": [
+    {
+      "file": "NK123-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK123-PURPLE.png"
+    },
+    {
+      "file": "NK123-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK123-RANI.png"
+    }
+  ],
+  "NK127B": [
+    {
+      "file": "NK127B-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK127B-RANI.png"
+    }
+  ],
+  "NK136": [
+    {
+      "file": "NK136-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK136-GREEN.png"
+    },
+    {
+      "file": "NK136-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK136-MOVE.png"
+    }
+  ],
+  "NK150A": [
+    {
+      "file": "NK150A-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK150A-BLUE.png"
+    }
+  ],
+  "NK160": [
+    {
+      "file": "NK160-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK160-MUSTARD.png"
+    }
+  ],
+  "NK178": [
+    {
+      "file": "NK178-WINE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK178-WINE.png"
+    }
+  ],
+  "NK179": [
+    {
+      "file": "NK179-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK179-GREY.png"
+    },
+    {
+      "file": "NK179-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/NK179-PEACH.png"
+    }
+  ],
+  "RS0008": [
+    {
+      "file": "RS0008-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0008-RANI.png"
+    }
+  ],
+  "RS0013": [
+    {
+      "file": "RS0013-PINK.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0013-PINK.png"
+    }
+  ],
+  "RS0023": [
+    {
+      "file": "RS0023-MAROON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0023-MAROON.png"
+    }
+  ],
+  "RS0024": [
+    {
+      "file": "RS0024-Mauve.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0024-Mauve.png"
+    }
+  ],
+  "RS0026": [
+    {
+      "file": "RS0026-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0026-BLUE.png"
+    }
+  ],
+  "RS0027": [
+    {
+      "file": "RS0027-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0027-OFF-WHITE.png"
+    }
+  ],
+  "RS0028": [
+    {
+      "file": "RS0028-YELLOW.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0028-YELLOW.png"
+    }
+  ],
+  "RS0032": [
+    {
+      "file": "RS0032-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0032-PEACH.png"
+    }
+  ],
+  "RS0034": [
+    {
+      "file": "RS0034-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0034-MUSTARD.png"
+    }
+  ],
+  "RS0035": [
+    {
+      "file": "RS0035-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS0035-RANI.png"
+    }
+  ],
+  "RS008": [
+    {
+      "file": "RS008-ONION.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS008-ONION.png"
+    }
+  ],
+  "RS013": [
+    {
+      "file": "RS013-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS013-OFF-WHITE.png"
+    },
+    {
+      "file": "RS013-PINK.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS013-PINK.png"
+    }
+  ],
+  "RS023": [
+    {
+      "file": "RS023-MAROON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS023-MAROON.png"
+    }
+  ],
+  "RS024": [
+    {
+      "file": "RS024-Mauve.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS024-Mauve.png"
+    }
+  ],
+  "RS026": [
+    {
+      "file": "RS026-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS026-BLUE.png"
+    }
+  ],
+  "RS027": [
+    {
+      "file": "RS027-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS027-OFF-WHITE.png"
+    }
+  ],
+  "RS028": [
+    {
+      "file": "RS028-YELLOW.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS028-YELLOW.png"
+    }
+  ],
+  "RS032": [
+    {
+      "file": "RS032-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS032-PEACH.png"
+    }
+  ],
+  "RS034": [
+    {
+      "file": "RS034-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS034-MUSTARD.png"
+    }
+  ],
+  "RS035": [
+    {
+      "file": "RS035-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS035-GREEN.png"
+    },
+    {
+      "file": "RS035-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/RS035-PURPLE.png"
+    }
+  ],
+  "SF1050": [
+    {
+      "file": "SF1050-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1050-PEACH.png"
+    }
+  ],
+  "SF1051": [
+    {
+      "file": "SF1051-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1051-PURPLE.png"
+    }
+  ],
+  "SF1200": [
+    {
+      "file": "SF1200-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1200-MUSTARD.png"
+    }
+  ],
+  "SF1218": [
+    {
+      "file": "SF1218-RUST.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1218-RUST.png"
+    }
+  ],
+  "SF1313": [
+    {
+      "file": "SF1313-ONION.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1313-ONION.png"
+    }
+  ],
+  "SF1434": [
+    {
+      "file": "SF1434-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1434-BLUE.png"
+    }
+  ],
+  "SF1451": [
+    {
+      "file": "SF1451-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1451-OFF-WHITE.png"
+    }
+  ],
+  "SF1471": [
+    {
+      "file": "SF1471-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1471-MOVE.png"
+    }
+  ],
+  "SF1488": [
+    {
+      "file": "SF1488-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1488-GREEN.png"
+    }
+  ],
+  "SF1509": [
+    {
+      "file": "SF1509-GAJRI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1509-GAJRI.png"
+    }
+  ],
+  "SF1519": [
+    {
+      "file": "SF1519-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1519-OFF-WHITE.png"
+    }
+  ],
+  "SF1540": [
+    {
+      "file": "SF1540-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1540-RANI.png"
+    }
+  ],
+  "SF1541": [
+    {
+      "file": "SF1541-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1541-GREY.png"
+    }
+  ],
+  "SF1550": [
+    {
+      "file": "SF1550-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1550-OFF-WHITE.png"
+    }
+  ],
+  "SF1556": [
+    {
+      "file": "SF1556-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1556-GREEN.png"
+    }
+  ],
+  "SF1561": [
+    {
+      "file": "SF1561-WINE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1561-WINE.png"
+    }
+  ],
+  "SF1563": [
+    {
+      "file": "SF1563-BROWN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1563-BROWN.png"
+    },
+    {
+      "file": "SF1563-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1563-MOVE.png"
+    }
+  ],
+  "SF1564": [
+    {
+      "file": "SF1564-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1564-MUSTARD.png"
+    }
+  ],
+  "SF1566": [
+    {
+      "file": "SF1566-BROWN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1566-BROWN.png"
+    },
+    {
+      "file": "SF1566-WINE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1566-WINE.png"
+    }
+  ],
+  "SF1610": [
+    {
+      "file": "SF1610-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1610-GREEN.png"
+    },
+    {
+      "file": "SF1610-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1610-PEACH.png"
+    },
+    {
+      "file": "SF1610-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1610-TBLUE.png"
+    }
+  ],
+  "SF1617": [
+    {
+      "file": "SF1617-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-BLUE.png"
+    },
+    {
+      "file": "SF1617-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-OFF-WHITE.png"
+    },
+    {
+      "file": "SF1617-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-PURPLE.png"
+    },
+    {
+      "file": "SF1617-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1617-RANI.png"
+    }
+  ],
+  "SF1620": [
+    {
+      "file": "SF1620-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1620-RANI.png"
+    }
+  ],
+  "SF1625": [
+    {
+      "file": "SF1625-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1625-PEACH.png"
+    },
+    {
+      "file": "SF1625-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1625-TBLUE.png"
+    }
+  ],
+  "SF1627": [
+    {
+      "file": "SF1627-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1627-GREEN.png"
+    },
+    {
+      "file": "SF1627-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1627-PEACH.png"
+    },
+    {
+      "file": "SF1627-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1627-TBLUE.png"
+    }
+  ],
+  "SF1629": [
+    {
+      "file": "SF1629-BEIGE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1629-BEIGE.png"
+    }
+  ],
+  "SF1633": [
+    {
+      "file": "SF1633-LEMON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1633-LEMON.png"
+    },
+    {
+      "file": "SF1633-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1633-MOVE.png"
+    }
+  ],
+  "SF1634": [
+    {
+      "file": "SF1634-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1634-GREEN.png"
+    },
+    {
+      "file": "SF1634-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1634-MOVE.png"
+    },
+    {
+      "file": "SF1634-ORANGE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1634-ORANGE.png"
+    }
+  ],
+  "SF1636": [
+    {
+      "file": "SF1636-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1636-GREEN.png"
+    },
+    {
+      "file": "SF1636-MOVE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1636-MOVE.png"
+    }
+  ],
+  "SF1644": [
+    {
+      "file": "SF1644-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1644-GREEN.png"
+    },
+    {
+      "file": "SF1644-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1644-PURPLE.png"
+    }
+  ],
+  "SF1650": [
+    {
+      "file": "SF1650-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1650-GREEN.png"
+    },
+    {
+      "file": "SF1650-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1650-MUSTARD.png"
+    }
+  ],
+  "SF1662": [
+    {
+      "file": "SF1662-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1662-GREEN.png"
+    },
+    {
+      "file": "SF1662-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1662-PURPLE.png"
+    },
+    {
+      "file": "SF1662-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1662-RANI.png"
+    }
+  ],
+  "SF1669": [
+    {
+      "file": "SF1669-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1669-GREEN.png"
+    },
+    {
+      "file": "SF1669-Mauve.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1669-Mauve.png"
+    },
+    {
+      "file": "SF1669-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1669-TBLUE.png"
+    }
+  ],
+  "SF1670": [
+    {
+      "file": "SF1670-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1670-GREEN.png"
+    },
+    {
+      "file": "SF1670-PINK.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1670-PINK.png"
+    }
+  ],
+  "SF1671": [
+    {
+      "file": "SF1671-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1671-GREEN.png"
+    },
+    {
+      "file": "SF1671-LEMON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1671-LEMON.png"
+    }
+  ],
+  "SF1686": [
+    {
+      "file": "SF1686-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1686-GREEN.png"
+    },
+    {
+      "file": "SF1686-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1686-PURPLE.png"
+    }
+  ],
+  "SF1693": [
+    {
+      "file": "SF1693-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1693-GREY.png"
+    },
+    {
+      "file": "SF1693-LEMON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1693-LEMON.png"
+    },
+    {
+      "file": "SF1693-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1693-PEACH.png"
+    }
+  ],
+  "SF1698": [
+    {
+      "file": "SF1698-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1698-PEACH.png"
+    },
+    {
+      "file": "SF1698-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1698-TBLUE.png"
+    }
+  ],
+  "SF1701": [
+    {
+      "file": "SF1701-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1701-BLUE.png"
+    },
+    {
+      "file": "SF1701-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1701-GREEN.png"
+    },
+    {
+      "file": "SF1701-WINE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1701-WINE.png"
+    }
+  ],
+  "SF1708": [
+    {
+      "file": "SF1708-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1708-OFF-WHITE.png"
+    },
+    {
+      "file": "SF1708-TBLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1708-TBLUE.png"
+    }
+  ],
+  "SF1718": [
+    {
+      "file": "SF1718-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1718-MUSTARD.png"
+    }
+  ],
+  "SF1726": [
+    {
+      "file": "SF1726-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1726-BLUE.png"
+    },
+    {
+      "file": "SF1726-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1726-OFF-WHITE.png"
+    },
+    {
+      "file": "SF1726-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1726-PURPLE.png"
+    }
+  ],
+  "SF1733": [
+    {
+      "file": "SF1733-BLACK.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1733-BLACK.png"
+    }
+  ],
+  "SF1734": [
+    {
+      "file": "SF1734-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1734-GREEN.png"
+    }
+  ],
+  "SF1738": [
+    {
+      "file": "SF1738-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1738-OFF-WHITE.png"
+    },
+    {
+      "file": "SF1738-PINK.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1738-PINK.png"
+    }
+  ],
+  "SF1741": [
+    {
+      "file": "SF1741-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1741-PURPLE.png"
+    }
+  ],
+  "SF1742": [
+    {
+      "file": "SF1742-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1742-BLUE.png"
+    }
+  ],
+  "SF1745": [
+    {
+      "file": "SF1745-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1745-RANI.png"
+    }
+  ],
+  "SF1753": [
+    {
+      "file": "SF1753-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1753-GREEN.png"
+    }
+  ],
+  "SF1755": [
+    {
+      "file": "SF1755-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1755-PURPLE.png"
+    }
+  ],
+  "SF1757": [
+    {
+      "file": "SF1757-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1757-GREEN.png"
+    }
+  ],
+  "SF1758": [
+    {
+      "file": "SF1758-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1758-PURPLE.png"
+    }
+  ],
+  "SF1759": [
+    {
+      "file": "SF1759-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1759-GREY.png"
+    }
+  ],
+  "SF1766": [
+    {
+      "file": "SF1766-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1766-PURPLE.png"
+    }
+  ],
+  "SF1767": [
+    {
+      "file": "SF1767-RED.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1767-RED.png"
+    }
+  ],
+  "SF1772": [
+    {
+      "file": "SF1772-PURPLE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1772-PURPLE.png"
+    }
+  ],
+  "SF1773": [
+    {
+      "file": "SF1773-PEACH.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1773-PEACH.png"
+    }
+  ],
+  "SF1775": [
+    {
+      "file": "SF1775-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1775-BLUE.png"
+    }
+  ],
+  "SF1777": [
+    {
+      "file": "SF1777-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1777-OFF-WHITE.png"
+    }
+  ],
+  "SF1780": [
+    {
+      "file": "SF1780-OFF-WHITE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1780-OFF-WHITE.png"
+    }
+  ],
+  "SF1781": [
+    {
+      "file": "SF1781-MUSTARD.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1781-MUSTARD.png"
+    }
+  ],
+  "SF1783": [
+    {
+      "file": "SF1783-RANI.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1783-RANI.png"
+    }
+  ],
+  "SF1791": [
+    {
+      "file": "SF1791-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1791-GREEN.png"
+    }
+  ],
+  "SF1793": [
+    {
+      "file": "SF1793-GREY.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1793-GREY.png"
+    }
+  ],
+  "SF1798": [
+    {
+      "file": "SF1798-ONION.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1798-ONION.png"
+    }
+  ],
+  "SF1800": [
+    {
+      "file": "SF1800-LEMON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1800-LEMON.png"
+    }
+  ],
+  "SF1801": [
+    {
+      "file": "SF1801-BEIGE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1801-BEIGE.png"
+    }
+  ],
+  "SF1802": [
+    {
+      "file": "SF1802-YELLOW.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1802-YELLOW.png"
+    }
+  ],
+  "SF1803": [
+    {
+      "file": "SF1803-LEMON.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1803-LEMON.png"
+    }
+  ],
+  "SF1806": [
+    {
+      "file": "SF1806-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1806-BLUE.png"
+    }
+  ],
+  "SF1808": [
+    {
+      "file": "SF1808-MOUSE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1808-MOUSE.png"
+    }
+  ],
+  "SF1809": [
+    {
+      "file": "SF1809-GREEN.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1809-GREEN.png"
+    }
+  ],
+  "SF1810": [
+    {
+      "file": "SF1810-BEIGE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1810-BEIGE.png"
+    }
+  ],
+  "SF1811": [
+    {
+      "file": "SF1811-BLUE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF1811-BLUE.png"
+    }
+  ],
+  "SF589A": [
+    {
+      "file": "SF589A-WINE.png",
+      "color": "unknown",
+      "url": "https://adncxesithjuzyhcsuff.supabase.co/storage/v1/object/public/test-buck/photoshoots-colored/SF589A-WINE.png"
+    }
+  ]
+}

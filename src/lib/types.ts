@@ -12,7 +12,21 @@ export interface CatalogueItem {
   description?: string
   image_url?: string
   category?: string
-  photoshoot_url?: string
+}
+
+export interface CatalogueItemPhoto {
+  id: number
+  catalogue_item_id: number
+  color_variant: 'color1' | 'color2' | 'color3'
+  photo_url: string
+  display_order: number
+  color_name?: string
+  created_at?: string
+  updated_at?: string
+}
+
+export interface CatalogueItemWithPhotos extends CatalogueItem {
+  photos?: CatalogueItemPhoto[]
 }
 
 export interface Customer {
