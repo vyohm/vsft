@@ -17,14 +17,23 @@ export default function OrderPage() {
   const [step, setStep] = useState<'customer' | 'verification' | 'items'>('customer')
   const [customerData, setCustomerData] = useState<CustomerFormData | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const [hasInitialized, setHasInitialized] = useState(false)
 
-  // Check if customer details already exist and skip to items step
+  // Check if customer details already exist on initial load only
   useEffect(() => {
-    if (customerDetails && !submitting) {
+    if (!hasInitialized && customerDetails && !submitting) {
       setCustomerData(customerDetails as CustomerFormData)
-      setStep('items')
+      // If already verified, skip to items, otherwise go to verification
+      if (customerDetails.is_whatsapp_verified) {
+        setStep('items')
+      } else {
+        setStep('verification')
+      }
+      setHasInitialized(true)
+    } else if (!hasInitialized) {
+      setHasInitialized(true)
     }
-  }, [customerDetails, submitting])
+  }, [customerDetails, submitting, hasInitialized])
 
   const handleCustomerSubmit = (data: CustomerFormData) => {
     setCustomerData(data)
