@@ -23,6 +23,7 @@ interface CartContextType {
   getTotalPrice: () => number
   setCustomerDetails: (details: CustomerDetails) => void
   clearCustomerDetails: () => void
+  clearAll: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -164,6 +165,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCustomerDetailsState(null)
   }
 
+  const clearAll = () => {
+    setItems([])
+    setCustomerDetailsState(null)
+  }
+
   const needsCustomerDetails = items.length > 0 && !customerDetails
 
   const value: CartContextType = {
@@ -177,7 +183,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     getTotalItems,
     getTotalPrice,
     setCustomerDetails,
-    clearCustomerDetails
+    clearCustomerDetails,
+    clearAll
   }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
