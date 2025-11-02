@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import { CartProvider } from '@/contexts/CartContext'
+import { Providers } from '@/components/Providers'
 
 export const metadata: Metadata = {
   title: 'SFT | Fashion Brand',
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <CartProvider>{children}</CartProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

@@ -6,6 +6,7 @@ import { CatalogueItemWithPhotos, StockItem } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
 import Link from 'next/link'
+import QuickAddModal from './QuickAddModal'
 
 const ITEMS_PER_PAGE = 12
 
@@ -66,6 +67,7 @@ export default function CatalogueGrid() {
   const [colorFilter, setColorFilter] = useState('')
   const [sizeFilter, setSizeFilter] = useState('')
   const [selectedItem, setSelectedItem] = useState<ItemWithStock | null>(null)
+  const [quickAddItem, setQuickAddItem] = useState<ItemWithStock | null>(null)
   const [availableColors, setAvailableColors] = useState<string[]>([])
   const [availableSizes, setAvailableSizes] = useState<string[]>([])
 
@@ -349,11 +351,15 @@ export default function CatalogueGrid() {
                   <span className="text-lg font-bold text-brand-secondary">
                     {formatPrice(item.price)}
                   </span>
-                  <Link href="/order" className="w-full" onClick={(e) => e.stopPropagation()}>
-                    <button className="w-full bg-brand-primary text-brand-light px-4 py-2 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors text-xs font-medium">
-                      Order Now
-                    </button>
-                  </Link>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setQuickAddItem(item)
+                    }}
+                    className="w-full bg-brand-primary text-brand-light px-4 py-2 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors text-xs font-medium"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -468,6 +474,14 @@ export default function CatalogueGrid() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Quick Add Modal */}
+      {quickAddItem && (
+        <QuickAddModal
+          item={quickAddItem}
+          onClose={() => setQuickAddItem(null)}
+        />
       )}
     </>
   )
