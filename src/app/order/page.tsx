@@ -18,29 +18,51 @@ export default function OrderPage() {
   const [customerData, setCustomerData] = useState<CustomerFormData | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [hasInitialized, setHasInitialized] = useState(false)
+  const [verificationCompleted, setVerificationCompleted] = useState(false)
 
   // Check if customer details already exist on initial load only
   useEffect(() => {
     if (!hasInitialized && customerDetails && !submitting) {
       setCustomerData(customerDetails as CustomerFormData)
-      // If already verified and has items, skip to items
-      // If already verified but no items, redirect to catalogue
-      // Otherwise go to verification
-      if (customerDetails.is_whatsapp_verified) {
-        if (cartItems.length === 0) {
-          router.push('/#catalogue')
-          setHasInitialized(true)
-          return
-        }
+
+      // If customer has items in cart, they've already been through the flow - go to items
+      if (cartItems.length > 0) {
+        setVerificationCompleted(true)
         setStep('items')
-      } else {
-        setStep('verification')
+        setHasInitialized(true)
+        return
       }
+
+      // If verification step was already completed/skipped but no items, redirect to browse
+      if (customerDetails.verification_step_completed) {
+        setVerificationCompleted(true)
+        router.push('/explore')
+        setHasInitialized(true)
+        return
+      }
+
+      // If verified but no items, redirect to catalogue
+      if (customerDetails.is_whatsapp_verified) {
+        setVerificationCompleted(true)
+        router.push('/explore')
+        setHasInitialized(true)
+        return
+      }
+
+      // New customer with no items - show verification
+      setStep('verification')
       setHasInitialized(true)
     } else if (!hasInitialized) {
       setHasInitialized(true)
     }
   }, [customerDetails, submitting, hasInitialized, cartItems.length, router])
+
+  // Watch for cart changes - if verification has been completed/skipped and items are added, go to items step
+  useEffect(() => {
+    if (hasInitialized && verificationCompleted && cartItems.length > 0 && step !== 'items') {
+      setStep('items')
+    }
+  }, [cartItems.length, verificationCompleted, step, hasInitialized])
 
   const handleCustomerSubmit = async (data: CustomerFormData) => {
     setCustomerData(data)
@@ -77,20 +99,37 @@ export default function OrderPage() {
     setStep('verification')
   }
 
-  const handleVerified = (code: string) => {
-    // Code verification handled
+  const handleVerified = () => {
+    // Code verification handled - mark as completed so we don't return to this step
+    setVerificationCompleted(true)
+    // Update customer details to persist this
+    if (customerData) {
+      setCustomerDetails({
+        ...customerData,
+        verification_step_completed: true
+      })
+    }
     // If no items in cart, redirect to catalogue to browse
     if (cartItems.length === 0) {
-      router.push('/#catalogue')
+      router.push('/explore')
     } else {
       setStep('items')
     }
   }
 
   const handleSkipVerification = () => {
+    // Mark verification as completed (skipped) so we don't return to this step
+    setVerificationCompleted(true)
+    // Update customer details to persist this
+    if (customerData) {
+      setCustomerDetails({
+        ...customerData,
+        verification_step_completed: true
+      })
+    }
     // If no items in cart, redirect to catalogue to browse
     if (cartItems.length === 0) {
-      router.push('/#catalogue')
+      router.push('/explore')
     } else {
       setStep('items')
     }
@@ -242,9 +281,33 @@ export default function OrderPage() {
       <Navbar />
       <main className="min-h-screen py-12 px-4 bg-brand-light">
         <div className="container mx-auto max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-light text-center mb-12 tracking-[2px]">
+          <h1 className="text-4xl md:text-5xl font-light text-center mb-4 tracking-[2px]">
             Place Your Order
           </h1>
+
+          {/* Customer Info */}
+          {customerData && (
+            <div className="text-center mb-8">
+              <p className="text-lg text-brand-quaternary inline-flex items-center gap-3 flex-wrap justify-center">
+                <span>
+                  Order for: <span className="font-semibold text-brand-primary">{customerData.name}</span>
+                  {customerData.company_name && (
+                    <span className="text-brand-quaternary"> • {customerData.company_name}</span>
+                  )}
+                </span>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('vsft_cart')
+                    localStorage.removeItem('vsft_customer')
+                    window.location.href = '/order'
+                  }}
+                  className="text-sm text-brand-quaternary hover:text-brand-primary underline transition-colors"
+                >
+                  Not you?
+                </button>
+              </p>
+            </div>
+          )}
 
           {/* Progress indicator */}
           <div className="flex items-center justify-center mb-12">

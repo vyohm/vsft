@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { useCart } from '@/contexts/CartContext'
 import { supabase } from '@/lib/supabase'
 import { CatalogueItem, OrderItemFormData } from '@/lib/types'
@@ -23,6 +24,7 @@ interface OrderItemsFormProps {
 }
 
 export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps) {
+  const router = useRouter()
   const { items: cartItems, removeItem, updateQuantity } = useCart()
   const [rows, setRows] = useState<OrderItemRow[]>([
     {
@@ -56,17 +58,16 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
     }
   }, [cartItems])
 
+  // Redirect to catalogue if cart becomes empty
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      router.push('/explore')
+    }
+  }, [cartItems.length, router])
+
   const addRow = () => {
-    // Add new row at the beginning
-    setRows([
-      {
-        id: crypto.randomUUID(),
-        design_number: '',
-        quantity: 1,
-        color_option: 'color1',
-      },
-      ...rows,
-    ])
+    // Redirect to catalogue to browse and add items
+    router.push('/explore')
   }
 
   const removeRow = (id: string) => {

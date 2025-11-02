@@ -122,7 +122,45 @@ async function handleIncomingMessage(
     console.log('Found customer:', customer ? customer.name : 'None')
 
     if (!customer) {
-      // New customer - send welcome message asking them to start order on website
+      // No exact match found - check if there's any recent unverified customer
+      // This handles the case where order form phone != WhatsApp phone
+      const { data: recentCustomers } = await supabase
+        .from('customers')
+        .select('*')
+        .eq('is_whatsapp_verified', false)
+        .order('created_at', { ascending: false })
+        .limit(5) // Check last 5 unverified customers
+
+      console.log('Recent unverified customers:', recentCustomers?.length || 0)
+
+      if (recentCustomers && recentCustomers.length > 0) {
+        // Use the most recent unverified customer
+        customer = recentCustomers[0]
+        console.log('Using most recent unverified customer:', customer.name)
+
+        // Generate verification code and send it
+        const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
+
+        // Update customer with verification code AND WhatsApp phone number
+        await supabase
+          .from('customers')
+          .update({
+            verification_code: verificationCode,
+            whatsapp_phone_number: phoneNumber // Store the actual WhatsApp number
+          })
+          .eq('id', customer.id)
+
+        // Send verification code
+        await whatsappService.sendMessage(
+          phoneNumber,
+          `Hi ${customer.name}! 👋\n\nYour verification code is:\n\n*${verificationCode}*\n\nPlease enter this code on the website to verify your WhatsApp number and start your order.\n\n- SFT Team`
+        )
+
+        await whatsappService.markAsRead(messageId)
+        return
+      }
+
+      // Truly new customer - send welcome message
       await whatsappService.sendMessage(
         phoneNumber,
         `👋 Welcome to Sangeet Fashion Textiles!\n\nTo place an order, please visit our website:\n🌐 https://sangeetfashion.com/order\n\nFill in your details there and we'll send you a verification code to get started!\n\n- SFT Team`
@@ -136,10 +174,13 @@ async function handleIncomingMessage(
       // Generate a 6-digit verification code
       const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
 
-      // Save verification code to customer
+      // Save verification code and WhatsApp number to customer
       await supabase
         .from('customers')
-        .update({ verification_code: verificationCode })
+        .update({
+          verification_code: verificationCode,
+          whatsapp_phone_number: phoneNumber // Store the actual WhatsApp number
+        })
         .eq('id', customer.id)
 
       // Send verification code

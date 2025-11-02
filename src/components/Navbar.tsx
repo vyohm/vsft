@@ -56,15 +56,7 @@ export default function Navbar() {
                 href="/explore"
                 className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
               >
-                Catalogue
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/stock"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
-              >
-                Stock
+                Browse
               </Link>
             </li>
             <li>
@@ -72,28 +64,12 @@ export default function Navbar() {
                 href="/order"
                 className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm inline-flex items-center gap-2"
               >
-                Order
+                Cart
                 {cartCount > 0 && (
                   <span className="bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 min-w-[20px] px-1.5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#about"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#contact"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
-              >
-                Contact
               </Link>
             </li>
           </ul>
@@ -118,16 +94,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
                 >
-                  Catalogue
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/stock"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
-                >
-                  Stock
+                  Browse
                 </Link>
               </li>
               <li>
@@ -136,30 +103,12 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2 relative"
                 >
-                  Place Order
+                  Cart
                   {cartCount > 0 && (
                     <span className="ml-2 inline-flex bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 w-5 items-center justify-center">
                       {cartCount}
                     </span>
                   )}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#about"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contact"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
-                >
-                  Contact
                 </Link>
               </li>
             </ul>

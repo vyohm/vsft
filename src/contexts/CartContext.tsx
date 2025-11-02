@@ -9,6 +9,7 @@ export interface CustomerDetails {
   company_name?: string
   gst_number?: string
   is_whatsapp_verified?: boolean
+  verification_step_completed?: boolean
 }
 
 interface CartContextType {
