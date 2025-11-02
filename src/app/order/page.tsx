@@ -23,8 +23,15 @@ export default function OrderPage() {
   useEffect(() => {
     if (!hasInitialized && customerDetails && !submitting) {
       setCustomerData(customerDetails as CustomerFormData)
-      // If already verified, skip to items, otherwise go to verification
+      // If already verified and has items, skip to items
+      // If already verified but no items, redirect to catalogue
+      // Otherwise go to verification
       if (customerDetails.is_whatsapp_verified) {
+        if (cartItems.length === 0) {
+          router.push('/#catalogue')
+          setHasInitialized(true)
+          return
+        }
         setStep('items')
       } else {
         setStep('verification')
@@ -33,7 +40,7 @@ export default function OrderPage() {
     } else if (!hasInitialized) {
       setHasInitialized(true)
     }
-  }, [customerDetails, submitting, hasInitialized])
+  }, [customerDetails, submitting, hasInitialized, cartItems.length, router])
 
   const handleCustomerSubmit = async (data: CustomerFormData) => {
     setCustomerData(data)
@@ -71,12 +78,22 @@ export default function OrderPage() {
   }
 
   const handleVerified = (code: string) => {
-    // Code verification handled, proceed to items
-    setStep('items')
+    // Code verification handled
+    // If no items in cart, redirect to catalogue to browse
+    if (cartItems.length === 0) {
+      router.push('/#catalogue')
+    } else {
+      setStep('items')
+    }
   }
 
   const handleSkipVerification = () => {
-    setStep('items')
+    // If no items in cart, redirect to catalogue to browse
+    if (cartItems.length === 0) {
+      router.push('/#catalogue')
+    } else {
+      setStep('items')
+    }
   }
 
   const handleOrderSubmit = async (items: OrderItemFormData[]) => {
