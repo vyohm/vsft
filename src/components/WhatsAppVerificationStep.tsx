@@ -63,7 +63,7 @@ export default function WhatsAppVerificationStep({
   }
 
   return (
-    <div className="space-y-6 bg-white p-8 rounded-lg shadow-lg">
+    <div className="space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg">
       <div className="text-center">
         <h2 className="text-2xl font-semibold mb-2">WhatsApp Verification</h2>
         <p className="text-brand-quaternary">
@@ -72,7 +72,7 @@ export default function WhatsAppVerificationStep({
       </div>
 
       {/* Step 1: Send Message */}
-      <div className="border-2 border-brand-quaternary rounded-lg p-6 space-y-4">
+      <div className="border-2 border-brand-quaternary rounded-lg p-3 sm:p-6 space-y-4">
         <div className="flex items-start gap-3">
           <div className="flex-shrink-0 w-8 h-8 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
             1
@@ -112,7 +112,7 @@ export default function WhatsAppVerificationStep({
       </div>
 
       {/* Step 2: Enter Code */}
-      <div className="border-2 border-brand-quaternary rounded-lg p-6 space-y-4">
+      <div className="border-2 border-brand-quaternary rounded-lg p-3 sm:p-6 space-y-4">
         <div className="flex items-start gap-3">
           <div className="flex-shrink-0 w-8 h-8 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
             2

@@ -83,12 +83,28 @@ async function handleIncomingMessage(
   messageId: string
 ) {
   try {
-    // Check if customer exists with this phone number
-    const { data: customer } = await supabase
+    console.log('Handling incoming message from:', phoneNumber)
+
+    // Normalize phone number - remove + and any non-digits
+    const normalizedPhone = phoneNumber.replace(/\D/g, '')
+
+    // Try to find customer by matching the last 10 digits of the phone number
+    // This handles different formats like +917439856065, 917439856065, 7439856065
+    const { data: customers } = await supabase
       .from('customers')
       .select('*')
-      .eq('phone_number', phoneNumber)
-      .single()
+
+    let customer = null
+    if (customers) {
+      customer = customers.find(c => {
+        const customerPhone = (c.phone_number || '').replace(/\D/g, '')
+        const normalizedCustomerPhone = customerPhone.slice(-10)
+        const normalizedIncomingPhone = normalizedPhone.slice(-10)
+        return normalizedCustomerPhone === normalizedIncomingPhone
+      })
+    }
+
+    console.log('Found customer:', customer ? customer.name : 'None')
 
     if (!customer) {
       // New customer - send welcome message asking them to start order on website
