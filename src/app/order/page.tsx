@@ -35,10 +35,38 @@ export default function OrderPage() {
     }
   }, [customerDetails, submitting, hasInitialized])
 
-  const handleCustomerSubmit = (data: CustomerFormData) => {
+  const handleCustomerSubmit = async (data: CustomerFormData) => {
     setCustomerData(data)
     // Save to cart context so it persists
     setCustomerDetails(data)
+
+    // Create or update customer in database so webhook can find them
+    try {
+      // Check if customer exists
+      const { data: existingCustomer } = await supabase
+        .from('customers')
+        .select()
+        .eq('phone_number', data.phone_number)
+        .single()
+
+      if (!existingCustomer) {
+        // Create new customer
+        await supabase
+          .from('customers')
+          .insert([{
+            name: data.name,
+            phone_number: data.phone_number,
+            company_name: data.company_name,
+            gst_number: data.gst_number,
+            phone_verified: false,
+            is_whatsapp_verified: false
+          }])
+      }
+    } catch (error) {
+      console.error('Error creating customer:', error)
+      // Continue anyway - don't block the flow
+    }
+
     setStep('verification')
   }
 
