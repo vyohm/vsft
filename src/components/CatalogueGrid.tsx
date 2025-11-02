@@ -2,22 +2,72 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
-import { CatalogueItemWithPhotos } from '@/lib/types'
+import { CatalogueItemWithPhotos, StockItem } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
 import Link from 'next/link'
 
 const ITEMS_PER_PAGE = 12
 
+interface ItemWithStock extends CatalogueItemWithPhotos {
+  stockItems?: StockItem[]
+  availableSizes?: string[]
+  availableStockColors?: string[]
+}
+
+// Generate design number variations for fuzzy matching
+function generateVariations(designNumber: string): string[] {
+  const variations = new Set<string>()
+  const upper = designNumber.toUpperCase().trim()
+  variations.add(upper)
+
+  // SFT <-> SF conversion
+  if (upper.startsWith('SFT')) {
+    variations.add(upper.replace('SFT', 'SF'))
+  } else if (upper.startsWith('SF')) {
+    variations.add('SFT' + upper.substring(2))
+  }
+
+  // Remove leading zeros and add padded versions
+  const match = upper.match(/^([A-Z]+)(\d+)$/)
+  if (match) {
+    const prefix = match[1]
+    const number = match[2]
+
+    const numWithoutZeros = parseInt(number, 10).toString()
+    if (numWithoutZeros !== number) {
+      variations.add(prefix + numWithoutZeros)
+    }
+
+    const paddedVariations = [
+      number.padStart(4, '0'),
+      number.padStart(3, '0'),
+      number.padStart(2, '0')
+    ]
+    paddedVariations.forEach(padded => {
+      variations.add(prefix + padded)
+      if (prefix === 'SFT') {
+        variations.add('SF' + padded)
+      } else if (prefix === 'SF') {
+        variations.add('SFT' + padded)
+      }
+    })
+  }
+
+  return Array.from(variations)
+}
+
 export default function CatalogueGrid() {
-  const [items, setItems] = useState<CatalogueItemWithPhotos[]>([])
+  const [items, setItems] = useState<ItemWithStock[]>([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalCount, setTotalCount] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [colorFilter, setColorFilter] = useState('')
-  const [selectedItem, setSelectedItem] = useState<CatalogueItemWithPhotos | null>(null)
+  const [sizeFilter, setSizeFilter] = useState('')
+  const [selectedItem, setSelectedItem] = useState<ItemWithStock | null>(null)
   const [availableColors, setAvailableColors] = useState<string[]>([])
+  const [availableSizes, setAvailableSizes] = useState<string[]>([])
 
   useEffect(() => {
     async function fetchItems() {
@@ -84,13 +134,70 @@ export default function CatalogueGrid() {
 
         if (photosError) throw photosError
 
-        // Merge photos with catalogue items and maintain sorted order
+        // Fetch ALL stock items with pagination
+        let allStockItems: StockItem[] = []
+        let stockPage = 0
+        const stockPageSize = 1000
+        let hasMoreStock = true
+
+        while (hasMoreStock) {
+          const { data: stockData, error: stockError } = await supabase
+            .from('stock_items')
+            .select('*')
+            .range(stockPage * stockPageSize, (stockPage + 1) * stockPageSize - 1)
+
+          if (stockError) throw stockError
+
+          if (stockData && stockData.length > 0) {
+            allStockItems = allStockItems.concat(stockData)
+            stockPage++
+            hasMoreStock = stockData.length === stockPageSize
+          } else {
+            hasMoreStock = false
+          }
+        }
+
+        // Build stock variation map for fuzzy matching
+        const stockByDesign = new Map<string, StockItem[]>()
+        allStockItems.forEach(stockItem => {
+          const variations = generateVariations(stockItem.design_number)
+          variations.forEach(variation => {
+            const existing = stockByDesign.get(variation) || []
+            stockByDesign.set(variation, [...existing, stockItem])
+          })
+        })
+
+        // Merge photos and stock with catalogue items
         const itemMap = new Map(catalogueData?.map(item => [item.id, item]) || [])
-        const itemsWithPhotos = pageItemIds.map(id => {
+        const itemsWithPhotos: ItemWithStock[] = pageItemIds.map(id => {
           const item = itemMap.get(id)!
+          const photos = photosData?.filter(photo => photo.catalogue_item_id === id) || []
+
+          // Find matching stock items using fuzzy matching
+          const catalogueVariations = generateVariations(item.design_number)
+          let stockItems: StockItem[] = []
+          for (const variation of catalogueVariations) {
+            const matchedStock = stockByDesign.get(variation)
+            if (matchedStock) {
+              stockItems = matchedStock
+              break
+            }
+          }
+
+          // Extract unique sizes and colors from stock (normalize FREE variations)
+          const normalizedSizes = stockItems
+            .map(s => s.size)
+            .filter(Boolean)
+            .map(size => ['F', 'FREE_SIZE'].includes(size!.toUpperCase()) ? 'FREE' : size!)
+          const sizes = Array.from(new Set(normalizedSizes)).sort()
+          const stockColors = Array.from(new Set(stockItems.map(s => s.color).filter(Boolean))).sort()
+
           return {
             ...item,
-            photos: photosData?.filter(photo => photo.catalogue_item_id === id) || []
+            photos,
+            stockItems,
+            availableSizes: sizes,
+            availableStockColors: stockColors
           }
         })
 
@@ -105,6 +212,20 @@ export default function CatalogueGrid() {
 
         const uniqueColors = Array.from(new Set(colorPhotos?.map(p => p.color_name).filter(Boolean) || []))
         setAvailableColors(uniqueColors.sort())
+
+        // Get all unique sizes from stock and normalize FREE variations
+        const allSizesSet = new Set<string>()
+        allStockItems.forEach(item => {
+          if (item.size) {
+            // Normalize all FREE variations to just "FREE"
+            const normalizedSize = ['F', 'FREE_SIZE'].includes(item.size.toUpperCase())
+              ? 'FREE'
+              : item.size
+            allSizesSet.add(normalizedSize)
+          }
+        })
+        const uniqueSizes = Array.from(allSizesSet).sort()
+        setAvailableSizes(uniqueSizes)
       } catch (error) {
         console.error('Error fetching catalogue items:', error)
       } finally {
@@ -113,7 +234,7 @@ export default function CatalogueGrid() {
     }
 
     fetchItems()
-  }, [currentPage, searchQuery, colorFilter])
+  }, [currentPage, searchQuery, colorFilter, sizeFilter])
 
   // Get filtered items based on search
   const filteredItems = items.filter(item => {
@@ -123,7 +244,10 @@ export default function CatalogueGrid() {
     const matchesColor = !colorFilter ||
       item.photos?.some(p => p.color_name?.toLowerCase().includes(colorFilter.toLowerCase()))
 
-    return matchesSearch && matchesColor
+    const matchesSize = !sizeFilter ||
+      item.availableSizes?.includes(sizeFilter)
+
+    return matchesSearch && matchesColor && matchesSize
   })
 
   if (loading) {
@@ -166,6 +290,18 @@ export default function CatalogueGrid() {
         </div>
         <div className="flex-1">
           <select
+            value={sizeFilter}
+            onChange={(e) => setSizeFilter(e.target.value)}
+            className="w-full p-3 border-2 border-brand-quaternary rounded-lg focus:outline-none focus:border-brand-secondary"
+          >
+            <option value="">All Sizes</option>
+            {availableSizes.map(size => (
+              <option key={size} value={size}>{size}</option>
+            ))}
+          </select>
+        </div>
+        <div className="flex-1">
+          <select
             value={colorFilter}
             onChange={(e) => setColorFilter(e.target.value)}
             className="w-full p-3 border-2 border-brand-quaternary rounded-lg focus:outline-none focus:border-brand-secondary"
@@ -182,9 +318,6 @@ export default function CatalogueGrid() {
         {filteredItems.map((item) => {
           const photos = item.photos || []
           const hasPhotos = photos.length > 0
-          // Only count photos that have color names
-          const colorPhotos = photos.filter(p => p.color_name)
-          const colorCount = colorPhotos.length
 
           // Show first available photo (prioritize color1)
           const primaryPhoto = photos.find(p => p.color_variant === 'color1') || photos[0]
@@ -212,14 +345,6 @@ export default function CatalogueGrid() {
               </div>
               <div className="p-3 text-center">
                 <h3 className="text-sm font-semibold mb-2">Design #{item.design_number}</h3>
-                {colorCount > 0 && (
-                  <p className="text-xs text-brand-secondary mb-2">
-                    {colorCount} color{colorCount > 1 ? 's' : ''} available
-                  </p>
-                )}
-                {item.description && (
-                  <p className="text-brand-quaternary mb-2 text-xs line-clamp-2">{item.description}</p>
-                )}
                 <div className="flex flex-col gap-2">
                   <span className="text-lg font-bold text-brand-secondary">
                     {formatPrice(item.price)}
@@ -274,7 +399,34 @@ export default function CatalogueGrid() {
                 <p className="text-brand-quaternary mb-6">{selectedItem.description}</p>
               )}
 
-              <h3 className="font-semibold mb-4">Available Colors:</h3>
+              {/* Stock Information */}
+              {selectedItem.availableSizes && selectedItem.availableSizes.length > 0 && (
+                <div className="mb-6 p-4 bg-brand-tertiary rounded-lg">
+                  <h3 className="font-semibold mb-2">Available Sizes:</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedItem.availableSizes.map(size => (
+                      <span key={size} className="px-3 py-1 bg-white border-2 border-brand-primary rounded-full text-sm font-medium">
+                        {size}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedItem.availableStockColors && selectedItem.availableStockColors.length > 0 && (
+                <div className="mb-6 p-4 bg-brand-tertiary rounded-lg">
+                  <h3 className="font-semibold mb-2">Colors in Stock:</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedItem.availableStockColors.map(color => (
+                      <span key={color} className="px-3 py-1 bg-white border-2 border-brand-secondary rounded-full text-sm flex items-center justify-center">
+                        {color}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <h3 className="font-semibold mb-4">Photo Gallery:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {selectedItem.photos
                   ?.filter(p => p.color_name)
