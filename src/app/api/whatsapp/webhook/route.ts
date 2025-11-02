@@ -60,6 +60,10 @@ export async function POST(request: NextRequest) {
     // Check if this is a verification code (6 digits)
     if (messageText && /^\d{6}$/.test(messageText)) {
       await handleVerificationCode(phoneNumber, messageText, parsedMessage.messageId)
+    } else {
+      // This is a regular message (not a verification code)
+      // Check if customer exists and needs verification code
+      await handleIncomingMessage(phoneNumber, messageText || '', parsedMessage.messageId)
     }
 
     return NextResponse.json({ status: 'ok' })
@@ -70,6 +74,61 @@ export async function POST(request: NextRequest) {
       { error: 'Webhook processing failed' },
       { status: 500 }
     )
+  }
+}
+
+async function handleIncomingMessage(
+  phoneNumber: string,
+  messageText: string,
+  messageId: string
+) {
+  try {
+    // Check if customer exists with this phone number
+    const { data: customer } = await supabase
+      .from('customers')
+      .select('*')
+      .eq('phone_number', phoneNumber)
+      .single()
+
+    if (!customer) {
+      // New customer - send welcome message asking them to start order on website
+      await whatsappService.sendMessage(
+        phoneNumber,
+        `👋 Welcome to Sangeet Fashion Textiles!\n\nTo place an order, please visit our website:\n🌐 https://sangeetfashion.com/order\n\nFill in your details there and we'll send you a verification code to get started!\n\n- SFT Team`
+      )
+      await whatsappService.markAsRead(messageId)
+      return
+    }
+
+    // Customer exists - check if they need a verification code
+    if (!customer.is_whatsapp_verified) {
+      // Generate a 6-digit verification code
+      const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
+
+      // Save verification code to customer
+      await supabase
+        .from('customers')
+        .update({ verification_code: verificationCode })
+        .eq('id', customer.id)
+
+      // Send verification code
+      await whatsappService.sendMessage(
+        phoneNumber,
+        `Hi ${customer.name}! 👋\n\nYour verification code is:\n\n*${verificationCode}*\n\nPlease enter this code on the website to verify your WhatsApp number and start your order.\n\n- SFT Team`
+      )
+
+      await whatsappService.markAsRead(messageId)
+    } else {
+      // Already verified - send acknowledgment
+      await whatsappService.sendMessage(
+        phoneNumber,
+        `Hi ${customer.name}! 👋\n\nYour WhatsApp is already verified. You can continue with your order on our website.\n\nNeed help? Just reply to this message!\n\n- SFT Team`
+      )
+      await whatsappService.markAsRead(messageId)
+    }
+
+  } catch (error) {
+    console.error('Error handling incoming message:', error)
   }
 }
 
