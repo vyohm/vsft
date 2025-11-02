@@ -59,6 +59,8 @@ export interface OrderItem {
   unit_price: number
   quantity: number
   color_option: 'color1' | 'color2' | 'color3' | 'all'
+  size?: string
+  color?: string
   line_total?: number
   created_at?: string
 }
@@ -80,6 +82,22 @@ export interface OrderItemFormData {
   design_number: string
   quantity: number
   color_option: 'color1' | 'color2' | 'color3' | 'all'
+  size?: string
+  color?: string
+}
+
+// Cart types
+export interface CartItem {
+  design_number: string
+  catalogue_item_id: number
+  unit_price: number
+  quantity: number
+  size?: string
+  color?: string
+  color_option: 'color1' | 'color2' | 'color3' | 'all'
+  // Optional for display
+  image_url?: string
+  name?: string
 }
 
 // Stock Item type
