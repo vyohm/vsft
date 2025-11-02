@@ -87,6 +87,8 @@ async function handleIncomingMessage(
 
     // Normalize phone number - remove + and any non-digits
     const normalizedPhone = phoneNumber.replace(/\D/g, '')
+    console.log('Normalized incoming phone:', normalizedPhone)
+    console.log('Last 10 digits of incoming:', normalizedPhone.slice(-10))
 
     // Try to find customer by matching the last 10 digits of the phone number
     // This handles different formats like +917439856065, 917439856065, 7439856065
@@ -94,13 +96,23 @@ async function handleIncomingMessage(
       .from('customers')
       .select('*')
 
+    console.log('Total customers in DB:', customers?.length || 0)
+
     let customer = null
     if (customers) {
+      // Log all customer phone numbers for debugging
+      customers.forEach(c => {
+        const customerPhone = (c.phone_number || '').replace(/\D/g, '')
+        console.log(`Customer ${c.name}: phone=${c.phone_number}, normalized=${customerPhone}, last10=${customerPhone.slice(-10)}`)
+      })
+
       customer = customers.find(c => {
         const customerPhone = (c.phone_number || '').replace(/\D/g, '')
         const normalizedCustomerPhone = customerPhone.slice(-10)
         const normalizedIncomingPhone = normalizedPhone.slice(-10)
-        return normalizedCustomerPhone === normalizedIncomingPhone
+        const matches = normalizedCustomerPhone === normalizedIncomingPhone
+        console.log(`Comparing ${normalizedCustomerPhone} with ${normalizedIncomingPhone}: ${matches}`)
+        return matches
       })
     }
 
