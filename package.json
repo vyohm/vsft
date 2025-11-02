@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "@supabase/supabase-js": "^2.76.1",
+    "axios": "^1.13.1",
     "clsx": "^2.1.1",
     "csv-parse": "^6.1.0",
     "dotenv": "^17.2.3",
