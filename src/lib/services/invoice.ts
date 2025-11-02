@@ -1,4 +1,4 @@
-import PDFDocument from 'pdfkit'
+import { jsPDF } from 'jspdf'
 
 export interface InvoiceData {
   orderId: string
@@ -24,213 +24,176 @@ export class InvoiceService {
   generateInvoice(data: InvoiceData): Promise<Buffer> {
     return new Promise((resolve, reject) => {
       try {
-        const doc = new PDFDocument({ margin: 50, size: 'A4' })
-        const buffers: Buffer[] = []
-
-        doc.on('data', buffers.push.bind(buffers))
-        doc.on('end', () => {
-          const pdfData = Buffer.concat(buffers)
-          resolve(pdfData)
+        const doc = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4'
         })
-        doc.on('error', reject)
 
-        // Header with logo and company info
-        doc
-          .fontSize(24)
-          .font('Helvetica-Bold')
-          .fillColor('#2C5F2D')
-          .text('Sangeet Fashion Textiles', 50, 50)
-          .fontSize(10)
-          .font('Helvetica')
-          .fillColor('#666666')
-          .text('Premium Fashion Textiles', 50, 80)
-          .text('sangeetfashion.com', 50, 95)
+        const pageWidth = doc.internal.pageSize.getWidth()
+        const margin = 15
 
-        // Invoice title
-        doc
-          .fontSize(20)
-          .font('Helvetica-Bold')
-          .fillColor('#2C5F2D')
-          .text('INVOICE', 400, 50, { align: 'right' })
+        // Colors
+        const primaryColor = '#2C5F2D' // Dark green
+        const secondaryColor = '#97BC62' // Light green/gold
+        const textColor = '#000000'
+        const grayColor = '#666666'
 
-        // Order details box
-        doc
-          .fontSize(10)
-          .font('Helvetica')
-          .fillColor('#000000')
-          .text(`Order #: ${data.orderNumber}`, 400, 80, { align: 'right' })
-          .text(`Date: ${new Date(data.orderDate).toLocaleDateString('en-IN')}`, 400, 95, { align: 'right' })
+        // Header
+        doc.setFontSize(24)
+        doc.setTextColor(primaryColor)
+        doc.setFont('helvetica', 'bold')
+        doc.text('Sangeet Fashion Textiles', margin, 20)
+
+        doc.setFontSize(10)
+        doc.setTextColor(grayColor)
+        doc.setFont('helvetica', 'normal')
+        doc.text('Premium Fashion Textiles', margin, 27)
+        doc.text('sangeetfashion.com', margin, 32)
+
+        // Invoice title and details
+        doc.setFontSize(20)
+        doc.setTextColor(primaryColor)
+        doc.setFont('helvetica', 'bold')
+        doc.text('INVOICE', pageWidth - margin, 20, { align: 'right' })
+
+        doc.setFontSize(10)
+        doc.setTextColor(textColor)
+        doc.setFont('helvetica', 'normal')
+        doc.text(`Order #: ${data.orderNumber}`, pageWidth - margin, 27, { align: 'right' })
+        doc.text(`Date: ${new Date(data.orderDate).toLocaleDateString('en-IN')}`, pageWidth - margin, 32, { align: 'right' })
 
         // Divider line
-        doc
-          .strokeColor('#2C5F2D')
-          .lineWidth(2)
-          .moveTo(50, 130)
-          .lineTo(550, 130)
-          .stroke()
+        doc.setDrawColor(primaryColor)
+        doc.setLineWidth(0.5)
+        doc.line(margin, 40, pageWidth - margin, 40)
 
         // Customer Information
-        doc
-          .fontSize(12)
-          .font('Helvetica-Bold')
-          .fillColor('#2C5F2D')
-          .text('Bill To:', 50, 150)
+        let yPos = 50
+        doc.setFontSize(12)
+        doc.setTextColor(primaryColor)
+        doc.setFont('helvetica', 'bold')
+        doc.text('Bill To:', margin, yPos)
 
-        let yPos = 170
-        doc
-          .fontSize(10)
-          .font('Helvetica-Bold')
-          .fillColor('#000000')
-          .text(data.customer.name, 50, yPos)
+        yPos += 7
+        doc.setFontSize(10)
+        doc.setTextColor(textColor)
+        doc.setFont('helvetica', 'bold')
+        doc.text(data.customer.name, margin, yPos)
 
-        yPos += 15
         if (data.customer.company_name) {
-          doc
-            .font('Helvetica')
-            .text(data.customer.company_name, 50, yPos)
-          yPos += 15
+          yPos += 5
+          doc.setFont('helvetica', 'normal')
+          doc.text(data.customer.company_name, margin, yPos)
         }
 
-        doc.text(`Phone: ${data.customer.phone_number}`, 50, yPos)
-        yPos += 15
+        yPos += 5
+        doc.text(`Phone: ${data.customer.phone_number}`, margin, yPos)
 
         if (data.customer.gst_number) {
-          doc.text(`GST: ${data.customer.gst_number}`, 50, yPos)
-          yPos += 15
+          yPos += 5
+          doc.text(`GST: ${data.customer.gst_number}`, margin, yPos)
         }
 
-        yPos += 20
+        yPos += 15
 
         // Table Header
-        const tableTop = yPos
-        const tableHeaders = ['Design #', 'Size', 'Color', 'Qty', 'Unit Price', 'Amount']
-        const columnWidths = [80, 60, 80, 50, 80, 80]
-        let xPos = 50
+        const tableStartY = yPos
+        const colWidths = [25, 20, 25, 15, 30, 30]
+        const headers = ['Design #', 'Size', 'Color', 'Qty', 'Unit Price', 'Amount']
 
-        doc
-          .fontSize(10)
-          .font('Helvetica-Bold')
-          .fillColor('#FFFFFF')
-          .rect(50, tableTop, 500, 25)
-          .fill('#97BC62')
+        // Header background
+        doc.setFillColor(secondaryColor)
+        doc.rect(margin, tableStartY, pageWidth - 2 * margin, 8, 'F')
 
-        doc.fillColor('#FFFFFF')
-        tableHeaders.forEach((header, index) => {
-          const align = index >= 3 ? 'right' : 'left'
-          const textWidth = columnWidths[index]
-          const textX = align === 'right' ? xPos + textWidth - 10 : xPos + 5
+        // Header text
+        doc.setFontSize(10)
+        doc.setTextColor('#FFFFFF')
+        doc.setFont('helvetica', 'bold')
+        let xPos = margin + 2
 
-          doc.text(header, textX, tableTop + 8, {
-            width: textWidth,
-            align: align
-          })
-          xPos += columnWidths[index]
+        headers.forEach((header, i) => {
+          const align = i >= 3 ? 'right' : 'left'
+          if (align === 'right') {
+            doc.text(header, xPos + colWidths[i] - 2, tableStartY + 5.5, { align: 'right' })
+          } else {
+            doc.text(header, xPos, tableStartY + 5.5)
+          }
+          xPos += colWidths[i]
         })
 
         // Table Rows
-        yPos = tableTop + 30
-        doc.fillColor('#000000').font('Helvetica')
+        yPos = tableStartY + 8
+        doc.setTextColor(textColor)
+        doc.setFont('helvetica', 'normal')
 
         data.items.forEach((item, index) => {
-          // Add new page if needed
-          if (yPos > 700) {
+          // Check if need new page
+          if (yPos > 270) {
             doc.addPage()
-            yPos = 50
+            yPos = 20
           }
-
-          xPos = 50
 
           // Alternate row colors
           if (index % 2 === 1) {
-            doc.rect(50, yPos - 5, 500, 20).fillAndStroke('#F5F5F5', '#F5F5F5')
+            doc.setFillColor('#F5F5F5')
+            doc.rect(margin, yPos, pageWidth - 2 * margin, 7, 'F')
           }
 
-          doc.fillColor('#000000')
+          xPos = margin + 2
 
           // Design Number
-          doc.text(item.design_number, xPos + 5, yPos, {
-            width: columnWidths[0],
-            align: 'left'
-          })
-          xPos += columnWidths[0]
+          doc.text(item.design_number, xPos, yPos + 5)
+          xPos += colWidths[0]
 
           // Size
-          doc.text(item.size || '-', xPos + 5, yPos, {
-            width: columnWidths[1],
-            align: 'left'
-          })
-          xPos += columnWidths[1]
+          doc.text(item.size || '-', xPos, yPos + 5)
+          xPos += colWidths[1]
 
           // Color
-          doc.text(item.color || '-', xPos + 5, yPos, {
-            width: columnWidths[2],
-            align: 'left'
-          })
-          xPos += columnWidths[2]
+          doc.text(item.color || '-', xPos, yPos + 5)
+          xPos += colWidths[2]
 
           // Quantity
-          doc.text(item.quantity.toString(), xPos + columnWidths[3] - 10, yPos, {
-            width: columnWidths[3],
-            align: 'right'
-          })
-          xPos += columnWidths[3]
+          doc.text(item.quantity.toString(), xPos + colWidths[3] - 2, yPos + 5, { align: 'right' })
+          xPos += colWidths[3]
 
           // Unit Price
-          doc.text(`₹${item.unit_price.toLocaleString('en-IN')}`, xPos + columnWidths[4] - 10, yPos, {
-            width: columnWidths[4],
-            align: 'right'
-          })
-          xPos += columnWidths[4]
+          doc.text(`₹${item.unit_price.toLocaleString('en-IN')}`, xPos + colWidths[4] - 2, yPos + 5, { align: 'right' })
+          xPos += colWidths[4]
 
           // Amount
           const lineTotal = item.quantity * item.unit_price
-          doc.text(`₹${lineTotal.toLocaleString('en-IN')}`, xPos + columnWidths[5] - 10, yPos, {
-            width: columnWidths[5],
-            align: 'right'
-          })
+          doc.text(`₹${lineTotal.toLocaleString('en-IN')}`, xPos + colWidths[5] - 2, yPos + 5, { align: 'right' })
 
-          yPos += 20
+          yPos += 7
         })
 
         // Total line
-        yPos += 10
-        doc
-          .strokeColor('#2C5F2D')
-          .lineWidth(1)
-          .moveTo(350, yPos)
-          .lineTo(550, yPos)
-          .stroke()
+        yPos += 5
+        doc.setDrawColor(primaryColor)
+        doc.setLineWidth(0.3)
+        doc.line(pageWidth - margin - 70, yPos, pageWidth - margin, yPos)
 
-        yPos += 15
-        doc
-          .fontSize(12)
-          .font('Helvetica-Bold')
-          .fillColor('#2C5F2D')
-          .text('Total Amount:', 350, yPos)
-          .text(`₹${data.totalAmount.toLocaleString('en-IN')}`, 430, yPos, {
-            width: 120,
-            align: 'right'
-          })
+        yPos += 7
+        doc.setFontSize(12)
+        doc.setFont('helvetica', 'bold')
+        doc.setTextColor(primaryColor)
+        doc.text('Total Amount:', pageWidth - margin - 70, yPos)
+        doc.text(`₹${data.totalAmount.toLocaleString('en-IN')}`, pageWidth - margin, yPos, { align: 'right' })
 
         // Footer
-        doc
-          .fontSize(9)
-          .font('Helvetica')
-          .fillColor('#666666')
-          .text(
-            'Thank you for your business!',
-            50,
-            750,
-            { align: 'center', width: 500 }
-          )
-          .text(
-            'For any queries, please contact us at sangeetfashion.com',
-            50,
-            765,
-            { align: 'center', width: 500 }
-          )
+        doc.setFontSize(9)
+        doc.setTextColor(grayColor)
+        doc.setFont('helvetica', 'normal')
+        doc.text('Thank you for your business!', pageWidth / 2, 280, { align: 'center' })
+        doc.text('For any queries, please contact us at sangeetfashion.com', pageWidth / 2, 285, { align: 'center' })
 
-        doc.end()
+        // Convert to Buffer
+        const pdfOutput = doc.output('arraybuffer')
+        const buffer = Buffer.from(pdfOutput)
+
+        resolve(buffer)
       } catch (error) {
         reject(error)
       }
