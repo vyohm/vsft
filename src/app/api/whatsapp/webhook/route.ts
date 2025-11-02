@@ -43,7 +43,10 @@ export async function POST(request: NextRequest) {
     // Parse the incoming message
     const parsedMessage = whatsappService.parseIncomingMessage(body)
 
+    console.log('Parsed message type:', parsedMessage?.type, 'messageType:', parsedMessage?.messageType)
+
     if (!parsedMessage || parsedMessage.type !== 'message') {
+      console.log('Ignoring non-message event')
       return NextResponse.json({ status: 'ignored' })
     }
 
