@@ -27,6 +27,19 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
+    // Log incoming webhook data for debugging
+    console.log('Webhook received:', JSON.stringify(body, null, 2))
+
+    // Try to save to logs table (create if doesn't exist)
+    try {
+      await supabase.from('whatsapp_webhook_logs').insert({
+        raw_data: body,
+        created_at: new Date().toISOString()
+      })
+    } catch (logError) {
+      console.warn('Failed to log webhook (table might not exist):', logError)
+    }
+
     // Parse the incoming message
     const parsedMessage = whatsappService.parseIncomingMessage(body)
 
