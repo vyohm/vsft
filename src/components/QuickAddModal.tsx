@@ -98,6 +98,9 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
   }
 
   const handleStartOrder = () => {
+    // Close the "Start Order" modal and redirect to order page
+    // When they come back, customer details will be saved and they can add items
+    onClose()
     router.push('/order')
   }
 
@@ -354,14 +357,17 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
           <div className="bg-white rounded-lg max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-xl font-bold mb-4 text-brand-primary">Start Your Order First</h3>
             <p className="text-brand-quaternary mb-6">
-              Before adding items to your cart, you need to start an order and provide your details.
+              Before adding items to your cart, please provide your details and verify your WhatsApp number. This only takes a minute!
+            </p>
+            <p className="text-sm text-brand-quaternary mb-6 bg-brand-tertiary p-3 rounded-lg">
+              💡 <strong>Tip:</strong> After setup, you can return to the Catalogue tab to browse and add items to your cart.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={handleStartOrder}
                 className="flex-1 bg-brand-primary text-white px-6 py-3 rounded-lg hover:bg-brand-secondary hover:text-brand-primary transition-colors font-semibold"
               >
-                Start Order
+                Setup Order
               </button>
               <button
                 onClick={() => setNeedsOrderStart(false)}
