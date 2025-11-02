@@ -70,6 +70,7 @@ export default function CatalogueGrid() {
   const [quickAddItem, setQuickAddItem] = useState<ItemWithStock | null>(null)
   const [availableColors, setAvailableColors] = useState<string[]>([])
   const [availableSizes, setAvailableSizes] = useState<string[]>([])
+  const [searchError, setSearchError] = useState<string | null>(null)
 
   // Debounce search query
   useEffect(() => {
@@ -84,6 +85,7 @@ export default function CatalogueGrid() {
     async function fetchItems() {
       try {
         setLoading(true)
+        setSearchError(null)
         const from = (currentPage - 1) * ITEMS_PER_PAGE
         const to = from + ITEMS_PER_PAGE - 1
 
@@ -219,8 +221,95 @@ export default function CatalogueGrid() {
           }
         })
 
-        setItems(itemsWithPhotos)
-        setTotalCount(count)
+        // Set search error if search returned no results, then reload all items
+        if (debouncedSearchQuery && count === 0) {
+          setSearchError(`Design "${debouncedSearchQuery}" not found`)
+
+          // Fetch all items instead
+          const { data: allItemsData } = await supabase
+            .from('catalogue_items')
+            .select('id')
+            .eq('is_active', true)
+
+          const allItemIds = allItemsData?.map(item => item.id) || []
+
+          // Get photo counts for sorting
+          const { data: allPhotosData } = await supabase
+            .from('catalogue_item_photos')
+            .select('catalogue_item_id')
+            .in('catalogue_item_id', allItemIds)
+
+          const photoCountMap2 = new Map<number, number>()
+          allPhotosData?.forEach(photo => {
+            const count = photoCountMap2.get(photo.catalogue_item_id) || 0
+            photoCountMap2.set(photo.catalogue_item_id, count + 1)
+          })
+
+          // Sort and get page
+          const sortedIds = allItemsData
+            ?.sort((a, b) => {
+              const aHasPhotos = (photoCountMap2.get(a.id) || 0) > 0
+              const bHasPhotos = (photoCountMap2.get(b.id) || 0) > 0
+              if (aHasPhotos && !bHasPhotos) return -1
+              if (!aHasPhotos && bHasPhotos) return 1
+              return 0
+            })
+            .map(item => item.id) || []
+
+          const pageIds = sortedIds.slice(from, to + 1)
+
+          // Fetch full data
+          const { data: fullData } = await supabase
+            .from('catalogue_items')
+            .select('*')
+            .in('id', pageIds)
+
+          // Fetch photos
+          const { data: pagePhotos } = await supabase
+            .from('catalogue_item_photos')
+            .select('*')
+            .in('catalogue_item_id', pageIds)
+            .order('display_order', { ascending: true })
+
+          // Merge with stock
+          const itemMap2 = new Map(fullData?.map(item => [item.id, item]) || [])
+          const allItemsWithPhotos: ItemWithStock[] = pageIds.map(id => {
+            const item = itemMap2.get(id)!
+            const photos = pagePhotos?.filter(photo => photo.catalogue_item_id === id) || []
+
+            const catalogueVariations = generateVariations(item.design_number)
+            let stockItems: StockItem[] = []
+            for (const variation of catalogueVariations) {
+              const matchedStock = stockByDesign.get(variation)
+              if (matchedStock) {
+                stockItems = matchedStock
+                break
+              }
+            }
+
+            const normalizedSizes = stockItems
+              .map(s => s.size)
+              .filter(Boolean)
+              .map(size => ['F', 'FREE_SIZE'].includes(size!.toUpperCase()) ? 'FREE' : size!)
+            const sizes = Array.from(new Set(normalizedSizes)).sort()
+            const stockColors = Array.from(new Set(stockItems.map(s => s.color).filter(Boolean))).sort()
+
+            return {
+              ...item,
+              photos,
+              stockItems,
+              availableSizes: sizes,
+              availableStockColors: stockColors
+            }
+          })
+
+          setItems(allItemsWithPhotos)
+          setTotalCount(sortedIds.length)
+        } else {
+          setItems(itemsWithPhotos)
+          setTotalCount(count)
+        }
+
         setIsInitialLoad(false)
 
         // Get all unique color names for dropdown
@@ -275,7 +364,8 @@ export default function CatalogueGrid() {
     )
   }
 
-  if (items.length === 0) {
+  // Only show error if no search query and no items
+  if (items.length === 0 && !debouncedSearchQuery) {
     return (
       <div className="text-center py-12">
         <div className="space-y-4">
@@ -298,6 +388,23 @@ export default function CatalogueGrid() {
       {loading && !isInitialLoad && (
         <div className="mb-4 p-3 bg-blue-50 border-2 border-blue-200 rounded-lg text-blue-700 text-sm text-center">
           Searching...
+        </div>
+      )}
+
+      {/* Search error notification */}
+      {searchError && (
+        <div className="mb-4 p-3 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-sm text-center flex items-center justify-between">
+          <span>{searchError}</span>
+          <button
+            onClick={() => {
+              setSearchQuery('')
+              setDebouncedSearchQuery('')
+              setSearchError(null)
+            }}
+            className="ml-4 px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-xs"
+          >
+            Clear Search
+          </button>
         </div>
       )}
 
