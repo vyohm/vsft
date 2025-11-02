@@ -1,11 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { useRouter } from 'next/navigation'
 import { useCart } from '@/contexts/CartContext'
 
 export default function NewOrderPage() {
-  const router = useRouter()
   const { clearAll } = useCart()
   const hasCleared = useRef(false)
 
@@ -17,11 +15,11 @@ export default function NewOrderPage() {
     // Clear all cart and customer data
     clearAll()
 
-    // Use replace instead of push to avoid back button issues
-    // Small delay to ensure clearAll completes
+    // Longer delay to ensure state updates complete
+    // Then do a hard navigation to ensure fresh state
     setTimeout(() => {
-      router.replace('/order')
-    }, 100)
+      window.location.href = '/order'
+    }, 300)
   }, [])
 
   return (
