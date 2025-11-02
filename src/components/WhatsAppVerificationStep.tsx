@@ -73,8 +73,14 @@ export default function WhatsAppVerificationStep({
 
       {/* Step 1: Send Message */}
       <div className="border-2 border-brand-quaternary rounded-lg p-3 sm:p-6 space-y-4">
+        {/* Step number - above on mobile, side on desktop */}
+        <div className="md:hidden flex items-center justify-center mb-3">
+          <div className="w-8 h-8 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
+            1
+          </div>
+        </div>
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 w-8 h-8 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
+          <div className="hidden md:flex flex-shrink-0 w-8 h-8 bg-brand-primary text-white rounded-full items-center justify-center font-bold">
             1
           </div>
           <div className="flex-1">
@@ -113,8 +119,14 @@ export default function WhatsAppVerificationStep({
 
       {/* Step 2: Enter Code */}
       <div className="border-2 border-brand-quaternary rounded-lg p-3 sm:p-6 space-y-4">
+        {/* Step number - above on mobile, side on desktop */}
+        <div className="md:hidden flex items-center justify-center mb-3">
+          <div className="w-8 h-8 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
+            2
+          </div>
+        </div>
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 w-8 h-8 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
+          <div className="hidden md:flex flex-shrink-0 w-8 h-8 bg-brand-primary text-white rounded-full items-center justify-center font-bold">
             2
           </div>
           <div className="flex-1">

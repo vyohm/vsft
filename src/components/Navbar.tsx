@@ -2,11 +2,9 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
 import { useCart } from '@/contexts/CartContext'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
   const { getTotalItems } = useCart()
   const cartCount = getTotalItems()
 
@@ -14,7 +12,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-brand-primary shadow-lg">
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
+          <Link href="/" className="flex items-center">
             <Image
               src="/assets/images/logo-sft.jpeg"
               alt="SFT Logo"
@@ -24,29 +22,12 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-brand-light p-2"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-
-          {/* Desktop menu */}
-          <ul className="hidden md:flex gap-4 md:gap-8">
+          {/* Navigation menu - always visible */}
+          <ul className="flex gap-3 md:gap-8">
             <li>
               <Link
                 href="/"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-xs md:text-sm"
               >
                 Home
               </Link>
@@ -54,7 +35,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/explore"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-xs md:text-sm"
               >
                 Browse
               </Link>
@@ -62,7 +43,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/order"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm inline-flex items-center gap-2"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-xs md:text-sm inline-flex items-center gap-1 md:gap-2"
               >
                 Cart
                 {cartCount > 0 && (
@@ -74,46 +55,6 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4">
-            <ul className="flex flex-col gap-4">
-              <li>
-                <Link
-                  href="/"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/explore"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2"
-                >
-                  Browse
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/order"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm py-2 relative"
-                >
-                  Cart
-                  {cartCount > 0 && (
-                    <span className="ml-2 inline-flex bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 w-5 items-center justify-center">
-                      {cartCount}
-                    </span>
-                  )}
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
       </nav>
     </header>
   )

@@ -328,9 +328,10 @@ export default function OrderPage() {
             </div>
           )}
 
-          {/* Progress indicator */}
+          {/* Progress indicator - horizontal on desktop, vertical on mobile */}
           <div className="flex items-center justify-center mb-12">
-            <div className="flex items-center gap-4">
+            {/* Desktop: horizontal */}
+            <div className="hidden md:flex items-center gap-4">
               <div
                 className={`flex items-center justify-center w-10 h-10 rounded-full ${
                   step === 'customer'
@@ -355,6 +356,41 @@ export default function OrderPage() {
               <div className="w-24 h-1 bg-brand-quaternary" />
               <div
                 className={`flex items-center justify-center w-10 h-10 rounded-full ${
+                  step === 'items'
+                    ? 'bg-brand-secondary text-brand-primary'
+                    : 'bg-brand-quaternary text-white'
+                }`}
+              >
+                3
+              </div>
+            </div>
+
+            {/* Mobile: vertical */}
+            <div className="flex md:hidden flex-col items-center gap-2">
+              <div
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                  step === 'customer'
+                    ? 'bg-brand-secondary text-brand-primary'
+                    : 'bg-brand-primary text-brand-light'
+                }`}
+              >
+                1
+              </div>
+              <div className="w-1 h-12 bg-brand-quaternary" />
+              <div
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                  step === 'verification'
+                    ? 'bg-brand-secondary text-brand-primary'
+                    : step === 'items'
+                    ? 'bg-brand-primary text-brand-light'
+                    : 'bg-brand-quaternary text-white'
+                }`}
+              >
+                2
+              </div>
+              <div className="w-1 h-12 bg-brand-quaternary" />
+              <div
+                className={`flex items-center justify-center w-8 h-8 rounded-full ${
                   step === 'items'
                     ? 'bg-brand-secondary text-brand-primary'
                     : 'bg-brand-quaternary text-white'

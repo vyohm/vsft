@@ -168,6 +168,7 @@ export default async function OrderDetailPage({ params }: OrderPageProps) {
               isWhatsAppVerified={order.customer.is_whatsapp_verified || false}
               invoiceSent={order.invoice_sent || false}
               invoiceUrl={order.invoice_url}
+              customerPhoneNumber={order.customer.phone_number}
             />
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import WhatsAppVerificationModal from './WhatsAppVerificationModal'
 
 interface InvoiceSectionProps {
   orderId: string
@@ -8,27 +9,34 @@ interface InvoiceSectionProps {
   isWhatsAppVerified: boolean
   invoiceSent: boolean
   invoiceUrl?: string
+  customerPhoneNumber?: string
 }
 
 export default function InvoiceSection({
   orderId,
   customerId,
-  isWhatsAppVerified,
+  isWhatsAppVerified: initialIsWhatsAppVerified,
   invoiceSent: initialInvoiceSent,
-  invoiceUrl: initialInvoiceUrl
+  invoiceUrl: initialInvoiceUrl,
+  customerPhoneNumber
 }: InvoiceSectionProps) {
   const [sending, setSending] = useState(false)
   const [invoiceSent, setInvoiceSent] = useState(initialInvoiceSent)
   const [invoiceUrl, setInvoiceUrl] = useState(initialInvoiceUrl)
   const [error, setError] = useState<string | null>(null)
-  const [showVerificationPrompt, setShowVerificationPrompt] = useState(false)
+  const [showVerificationModal, setShowVerificationModal] = useState(false)
+  const [isWhatsAppVerified, setIsWhatsAppVerified] = useState(initialIsWhatsAppVerified)
 
   const handleSendInvoice = async () => {
     if (!isWhatsAppVerified) {
-      setShowVerificationPrompt(true)
+      setShowVerificationModal(true)
       return
     }
 
+    await sendInvoice()
+  }
+
+  const sendInvoice = async () => {
     setSending(true)
     setError(null)
 
@@ -53,27 +61,28 @@ export default function InvoiceSection({
     }
   }
 
-  return (
-    <div className="mt-6 p-4 border-2 border-brand-quaternary rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">📄 Invoice</h2>
+  const handleVerified = async () => {
+    setIsWhatsAppVerified(true)
+    setShowVerificationModal(false)
+    // Automatically send invoice after verification
+    await sendInvoice()
+  }
 
-      {showVerificationPrompt && !isWhatsAppVerified ? (
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <p className="text-yellow-800 mb-3">
-            ⚠️ WhatsApp verification required to receive invoice
-          </p>
-          <p className="text-sm text-yellow-700 mb-4">
-            To receive your invoice via WhatsApp, you need to verify your WhatsApp number first.
-            Click the button below to receive a verification code.
-          </p>
-          <button
-            onClick={() => window.location.href = '/order'}
-            className="bg-brand-secondary text-brand-primary px-6 py-2 rounded-lg font-semibold hover:bg-brand-tertiary transition-colors"
-          >
-            Verify WhatsApp Number
-          </button>
-        </div>
-      ) : invoiceSent ? (
+  return (
+    <>
+      {/* Verification Modal */}
+      {showVerificationModal && customerPhoneNumber && (
+        <WhatsAppVerificationModal
+          phoneNumber={customerPhoneNumber}
+          onVerified={handleVerified}
+          onClose={() => setShowVerificationModal(false)}
+        />
+      )}
+
+      <div className="mt-6 p-4 border-2 border-brand-quaternary rounded-lg">
+        <h2 className="text-xl font-semibold mb-4">📄 Invoice</h2>
+
+        {invoiceSent ? (
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-green-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,6 +138,7 @@ export default function InvoiceSection({
           )}
         </div>
       )}
-    </div>
+      </div>
+    </>
   )
 }

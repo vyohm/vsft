@@ -166,16 +166,16 @@ export default function GroupedOrderItemsForm({ onSubmit, onBack }: OrderItemsFo
                 {item.variants.map((variant, vIndex) => (
                   <div
                     key={`${variant.size}-${variant.color}-${vIndex}`}
-                    className="flex items-center gap-3 p-3 bg-brand-tertiary rounded-lg"
+                    className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-brand-tertiary rounded-lg"
                   >
-                    <div className="flex-1 flex items-center gap-2">
+                    <div className="flex-1 flex items-center gap-1 sm:gap-2 flex-wrap min-w-0">
                       {variant.size && (
-                        <span className="px-3 py-1 bg-brand-primary text-white rounded-full text-sm font-semibold">
+                        <span className="px-2 sm:px-3 py-1 bg-brand-primary text-white rounded-full text-xs sm:text-sm font-semibold">
                           {variant.size}
                         </span>
                       )}
                       {variant.color && (
-                        <span className="px-3 py-1 bg-brand-secondary text-white rounded-full text-sm font-semibold">
+                        <span className="px-2 sm:px-3 py-1 bg-brand-secondary text-white rounded-full text-xs sm:text-sm font-semibold">
                           {variant.color}
                         </span>
                       )}
@@ -220,9 +220,9 @@ export default function GroupedOrderItemsForm({ onSubmit, onBack }: OrderItemsFo
                       </div>
                     ) : (
                       // View mode - show quantity and subtotal
-                      <div className="flex items-center gap-4">
-                        <span className="text-brand-quaternary">Qty: {variant.quantity}</span>
-                        <span className="text-lg font-bold text-brand-primary">
+                      <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+                        <span className="text-sm sm:text-base text-brand-quaternary">Qty: {variant.quantity}</span>
+                        <span className="text-sm sm:text-lg font-bold text-brand-primary whitespace-nowrap">
                           {formatPrice(variant.quantity * item.unit_price)}
                         </span>
                       </div>
