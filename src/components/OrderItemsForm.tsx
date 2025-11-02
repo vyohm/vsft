@@ -159,6 +159,8 @@ export default function OrderItemsForm({ onSubmit, onBack }: OrderItemsFormProps
         design_number: row.design_number,
         quantity: row.quantity,
         color_option: row.color_option,
+        size: row.size,
+        color: row.color,
       }))
     )
   }
