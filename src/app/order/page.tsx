@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CustomerDetailsForm from '@/components/CustomerDetailsForm'
-import OrderItemsForm from '@/components/OrderItemsForm'
+import GroupedOrderItemsForm from '@/components/GroupedOrderItemsForm'
 import WhatsAppVerificationStep from '@/components/WhatsAppVerificationStep'
 import { useCart } from '@/contexts/CartContext'
 import { supabase } from '@/lib/supabase'
@@ -264,10 +264,29 @@ export default function OrderPage() {
 
       if (updateError) throw updateError
 
-      // 6. Clear cart and customer details
+      // 6. Auto-send invoice if WhatsApp is verified
+      if (customer.is_whatsapp_verified) {
+        try {
+          console.log('Auto-sending invoice to verified WhatsApp...')
+          const invoiceResponse = await fetch(`/api/orders/${order.id}/send-invoice`, {
+            method: 'POST'
+          })
+
+          if (invoiceResponse.ok) {
+            console.log('Invoice sent successfully')
+          } else {
+            console.error('Failed to send invoice automatically')
+          }
+        } catch (invoiceError) {
+          console.error('Error sending invoice:', invoiceError)
+          // Don't fail the order if invoice sending fails
+        }
+      }
+
+      // 7. Clear cart and customer details
       clearCart()
 
-      // 7. Redirect to success page
+      // 8. Redirect to success page
       router.push(`/order/${order.id}`)
     } catch (error) {
       console.error('Error creating order:', error)
@@ -359,7 +378,7 @@ export default function OrderPage() {
               onSkip={handleSkipVerification}
             />
           ) : (
-            <OrderItemsForm
+            <GroupedOrderItemsForm
               onSubmit={handleOrderSubmit}
               onBack={() => setStep('verification')}
             />
