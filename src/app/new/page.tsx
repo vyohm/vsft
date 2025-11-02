@@ -1,20 +1,28 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/contexts/CartContext'
 
 export default function NewOrderPage() {
   const router = useRouter()
   const { clearAll } = useCart()
+  const hasCleared = useRef(false)
 
   useEffect(() => {
+    // Only run once to prevent infinite loop
+    if (hasCleared.current) return
+    hasCleared.current = true
+
     // Clear all cart and customer data
     clearAll()
 
-    // Redirect to order page to start fresh
-    router.push('/order')
-  }, [clearAll, router])
+    // Use replace instead of push to avoid back button issues
+    // Small delay to ensure clearAll completes
+    setTimeout(() => {
+      router.replace('/order')
+    }, 100)
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-brand-light">
