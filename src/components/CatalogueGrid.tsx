@@ -5,7 +5,6 @@ import { supabase } from '@/lib/supabase'
 import { CatalogueItemWithPhotos, StockItem } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
-import Link from 'next/link'
 import QuickAddModal from './QuickAddModal'
 
 const ITEMS_PER_PAGE = 12
@@ -66,7 +65,6 @@ export default function CatalogueGrid() {
   const [searchQuery, setSearchQuery] = useState('')
   const [colorFilter, setColorFilter] = useState('')
   const [sizeFilter, setSizeFilter] = useState('')
-  const [selectedItem, setSelectedItem] = useState<ItemWithStock | null>(null)
   const [quickAddItem, setQuickAddItem] = useState<ItemWithStock | null>(null)
   const [availableColors, setAvailableColors] = useState<string[]>([])
   const [availableSizes, setAvailableSizes] = useState<string[]>([])
@@ -236,7 +234,7 @@ export default function CatalogueGrid() {
     }
 
     fetchItems()
-  }, [currentPage, searchQuery, colorFilter, sizeFilter])
+  }, [currentPage])
 
   // Get filtered items based on search
   const filteredItems = items.filter(item => {
@@ -329,7 +327,7 @@ export default function CatalogueGrid() {
             <div
               key={item.id}
               className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl active:scale-95 transition-all cursor-pointer"
-              onClick={() => setSelectedItem(item)}
+              onClick={() => setQuickAddItem(item)}
             >
               <div className="relative w-full aspect-[2/3] bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-1">
                 {photoUrl && (
@@ -373,107 +371,6 @@ export default function CatalogueGrid() {
           totalPages={totalPages}
           onPageChange={setCurrentPage}
         />
-      )}
-
-      {/* Color Variations Modal */}
-      {selectedItem && (
-        <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-          onClick={() => setSelectedItem(null)}
-        >
-          <div
-            className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold">Design #{selectedItem.design_number}</h2>
-                  <p className="text-xl text-brand-secondary font-bold mt-2">
-                    {formatPrice(selectedItem.price)}
-                  </p>
-                </div>
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="text-brand-quaternary hover:text-brand-primary text-2xl"
-                >
-                  ×
-                </button>
-              </div>
-
-              {selectedItem.description && (
-                <p className="text-brand-quaternary mb-6">{selectedItem.description}</p>
-              )}
-
-              {/* Stock Information */}
-              {selectedItem.availableSizes && selectedItem.availableSizes.length > 0 && (
-                <div className="mb-6 p-4 bg-brand-tertiary rounded-lg">
-                  <h3 className="font-semibold mb-2">Available Sizes:</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedItem.availableSizes.map(size => (
-                      <span key={size} className="px-3 py-1 bg-white border-2 border-brand-primary rounded-full text-sm font-medium">
-                        {size}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {selectedItem.availableStockColors && selectedItem.availableStockColors.length > 0 && (
-                <div className="mb-6 p-4 bg-brand-tertiary rounded-lg">
-                  <h3 className="font-semibold mb-2">Colors in Stock:</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedItem.availableStockColors.map(color => (
-                      <span key={color} className="px-3 py-1 bg-white border-2 border-brand-secondary rounded-full text-sm flex items-center justify-center">
-                        {color}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <h3 className="font-semibold mb-4">Photo Gallery:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {selectedItem.photos
-                  ?.filter(p => p.color_name)
-                  .map((photo) => (
-                    <div key={photo.id} className="border-2 border-brand-quaternary rounded-lg overflow-hidden">
-                      <div className="aspect-[2/3] bg-gradient-to-br from-brand-tertiary to-brand-quaternary p-2">
-                        <img
-                          src={photo.photo_url}
-                          alt={`${selectedItem.design_number} - ${photo.color_name}`}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="p-3 text-center bg-brand-tertiary">
-                        <p className="font-semibold text-brand-primary">{photo.color_name}</p>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-
-              {(!selectedItem.photos || selectedItem.photos.filter(p => p.color_name).length === 0) && (
-                <p className="text-brand-quaternary text-center py-8">
-                  No color variations available for this design.
-                </p>
-              )}
-
-              <div className="mt-6 flex gap-4">
-                <Link href="/order" className="flex-1" onClick={() => setSelectedItem(null)}>
-                  <button className="w-full bg-brand-primary text-brand-light px-6 py-3 rounded-full hover:bg-brand-secondary hover:text-brand-primary transition-colors font-semibold">
-                    Order Now
-                  </button>
-                </Link>
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="flex-1 bg-brand-quaternary text-white px-6 py-3 rounded-full hover:opacity-80 transition-opacity font-semibold"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       )}
 
       {/* Quick Add Modal */}

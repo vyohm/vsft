@@ -13,79 +13,69 @@ interface QuickAddModalProps {
   onClose: () => void
 }
 
-interface CartSelection {
-  size: string
-  color: string
-  quantity: number
-}
-
 export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
   const { addItem } = useCart()
-  const [selections, setSelections] = useState<CartSelection[]>([])
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([])
+  const [selectedColors, setSelectedColors] = useState<string[]>([])
+  const [quantity, setQuantity] = useState(1)
+  const [customSize, setCustomSize] = useState('')
+  const [customColor, setCustomColor] = useState('')
   const [error, setError] = useState<string>('')
 
-  const hasStock = item.availableSizes && item.availableSizes.length > 0
-
-  const addSelection = () => {
-    setSelections([...selections, { size: '', color: '', quantity: 1 }])
-  }
-
-  const removeSelection = (index: number) => {
-    setSelections(selections.filter((_, i) => i !== index))
-  }
-
-  const updateSelection = (index: number, field: keyof CartSelection, value: string | number) => {
-    const newSelections = [...selections]
-    newSelections[index] = { ...newSelections[index], [field]: value }
-    setSelections(newSelections)
+  const toggleSize = (size: string) => {
+    setSelectedSizes(prev =>
+      prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]
+    )
     setError('')
   }
 
+  const toggleColor = (color: string) => {
+    setSelectedColors(prev =>
+      prev.includes(color) ? prev.filter(c => c !== color) : [...prev, color]
+    )
+    setError('')
+  }
+
+  const addCustomSize = () => {
+    if (customSize.trim() && !selectedSizes.includes(customSize.trim())) {
+      setSelectedSizes(prev => [...prev, customSize.trim()])
+      setCustomSize('')
+      setError('')
+    }
+  }
+
+  const addCustomColor = () => {
+    if (customColor.trim() && !selectedColors.includes(customColor.trim())) {
+      setSelectedColors(prev => [...prev, customColor.trim()])
+      setCustomColor('')
+      setError('')
+    }
+  }
+
   const handleAddToCart = () => {
-    // If no stock info, add one item with quantity 1
-    if (!hasStock) {
-      addItem({
-        design_number: item.design_number,
-        catalogue_item_id: item.id,
-        unit_price: item.price,
-        quantity: 1,
-        color_option: 'all',
-        image_url: item.photos?.[0]?.photo_url,
-        name: `Design #${item.design_number}`
-      })
-      onClose()
+    // Validate at least one size or color is selected
+    if (selectedSizes.length === 0 && selectedColors.length === 0) {
+      setError('Please select at least one size or color')
       return
     }
 
-    // Validate selections
-    if (selections.length === 0) {
-      setError('Please add at least one size/color combination')
-      return
-    }
+    // Generate all combinations
+    const sizes = selectedSizes.length > 0 ? selectedSizes : ['']
+    const colors = selectedColors.length > 0 ? selectedColors : ['']
 
-    for (const selection of selections) {
-      if (item.availableSizes && item.availableSizes.length > 0 && !selection.size) {
-        setError('Please select a size for all items')
-        return
-      }
-      if (item.availableStockColors && item.availableStockColors.length > 0 && !selection.color) {
-        setError('Please select a color for all items')
-        return
-      }
-    }
-
-    // Add all selections to cart
-    selections.forEach(selection => {
-      addItem({
-        design_number: item.design_number,
-        catalogue_item_id: item.id,
-        unit_price: item.price,
-        quantity: selection.quantity,
-        size: selection.size || undefined,
-        color: selection.color || undefined,
-        color_option: 'all',
-        image_url: item.photos?.[0]?.photo_url,
-        name: `Design #${item.design_number}`
+    sizes.forEach(size => {
+      colors.forEach(color => {
+        addItem({
+          design_number: item.design_number,
+          catalogue_item_id: item.id,
+          unit_price: item.price,
+          quantity: quantity,
+          size: size || undefined,
+          color: color || undefined,
+          color_option: 'all',
+          image_url: item.photos?.[0]?.photo_url,
+          name: `Design #${item.design_number}`
+        })
       })
     })
 
@@ -130,116 +120,160 @@ export default function QuickAddModal({ item, onClose }: QuickAddModalProps) {
             </div>
           )}
 
-          {/* No Stock - Simple Add */}
-          {!hasStock && (
-            <div className="mb-4 p-3 bg-blue-50 border-2 border-blue-200 rounded-lg text-blue-700 text-sm text-center">
-              Your order will help us prioritize production and delivery.
-            </div>
-          )}
-
-          {/* Multiple Selections */}
-          {hasStock && (
-            <>
-              <div className="mb-4">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-semibold">Select Size & Color Combinations</h3>
+          {/* Size Selection */}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-2">Select Sizes</label>
+            {item.availableSizes && item.availableSizes.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-2">
+                {item.availableSizes.map(size => (
                   <button
-                    onClick={addSelection}
-                    className="px-4 py-1 bg-brand-primary text-white rounded-full text-sm hover:bg-brand-secondary hover:text-brand-primary transition-colors"
+                    key={size}
+                    onClick={() => toggleSize(size)}
+                    className={`px-3 py-1 rounded-full border-2 transition-colors text-sm ${
+                      selectedSizes.includes(size)
+                        ? 'bg-brand-primary text-white border-brand-primary'
+                        : 'bg-white text-brand-primary border-brand-quaternary hover:border-brand-primary'
+                    }`}
                   >
-                    + Add More
+                    {size}
                   </button>
-                </div>
-
-                {selections.length === 0 && (
-                  <p className="text-sm text-brand-quaternary mb-3">Click "Add More" to start adding items</p>
-                )}
-
-                {selections.map((selection, index) => (
-                  <div key={index} className="mb-4 p-4 border-2 border-brand-quaternary rounded-lg">
-                    <div className="flex justify-between items-start mb-3">
-                      <span className="text-sm font-semibold text-brand-primary">Item #{index + 1}</span>
-                      <button
-                        onClick={() => removeSelection(index)}
-                        className="text-red-500 hover:text-red-700 text-xl leading-none"
-                      >
-                        ×
-                      </button>
-                    </div>
-
-                    {/* Size */}
-                    {item.availableSizes && item.availableSizes.length > 0 && (
-                      <div className="mb-3">
-                        <label className="block text-xs font-semibold mb-2">Size *</label>
-                        <div className="flex flex-wrap gap-2">
-                          {item.availableSizes.map(size => (
-                            <button
-                              key={size}
-                              onClick={() => updateSelection(index, 'size', size)}
-                              className={`px-3 py-1 rounded-full border-2 transition-colors text-sm ${
-                                selection.size === size
-                                  ? 'bg-brand-primary text-white border-brand-primary'
-                                  : 'bg-white text-brand-primary border-brand-quaternary hover:border-brand-primary'
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Color */}
-                    {item.availableStockColors && item.availableStockColors.length > 0 && (
-                      <div className="mb-3">
-                        <label className="block text-xs font-semibold mb-2">Color *</label>
-                        <div className="flex flex-wrap gap-2">
-                          {item.availableStockColors.map(color => (
-                            <button
-                              key={color}
-                              onClick={() => updateSelection(index, 'color', color)}
-                              className={`px-3 py-1 rounded-full border-2 transition-colors text-xs ${
-                                selection.color === color
-                                  ? 'bg-brand-secondary text-white border-brand-secondary'
-                                  : 'bg-white text-brand-secondary border-brand-quaternary hover:border-brand-secondary'
-                              }`}
-                            >
-                              {color}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Quantity */}
-                    <div>
-                      <label className="block text-xs font-semibold mb-2">Quantity</label>
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => updateSelection(index, 'quantity', Math.max(1, selection.quantity - 1))}
-                          className="w-8 h-8 rounded-full bg-brand-quaternary text-white font-bold hover:bg-brand-primary transition-colors text-sm"
-                        >
-                          -
-                        </button>
-                        <input
-                          type="number"
-                          min="1"
-                          value={selection.quantity}
-                          onChange={(e) => updateSelection(index, 'quantity', Math.max(1, parseInt(e.target.value) || 1))}
-                          className="w-16 text-center border-2 border-brand-quaternary rounded-lg py-1 font-semibold text-sm"
-                        />
-                        <button
-                          onClick={() => updateSelection(index, 'quantity', selection.quantity + 1)}
-                          className="w-8 h-8 rounded-full bg-brand-quaternary text-white font-bold hover:bg-brand-primary transition-colors text-sm"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                 ))}
               </div>
-            </>
+            )}
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={customSize}
+                onChange={(e) => setCustomSize(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && addCustomSize()}
+                placeholder="Custom size"
+                className="flex-1 px-3 py-2 border-2 border-brand-quaternary rounded-lg text-sm focus:outline-none focus:border-brand-primary"
+              />
+              <button
+                onClick={addCustomSize}
+                className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm hover:bg-brand-secondary hover:text-brand-primary transition-colors font-bold"
+              >
+                +
+              </button>
+            </div>
+            {selectedSizes.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {selectedSizes.map(size => (
+                  <span
+                    key={size}
+                    className="px-2 py-1 bg-brand-primary text-white rounded-full text-xs flex items-center gap-1"
+                  >
+                    {size}
+                    <button
+                      onClick={() => toggleSize(size)}
+                      className="hover:text-red-200"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Color Selection */}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-2">Select Colors</label>
+            {item.availableStockColors && item.availableStockColors.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-2">
+                {item.availableStockColors.map(color => (
+                  <button
+                    key={color}
+                    onClick={() => toggleColor(color)}
+                    className={`px-3 py-1 rounded-full border-2 transition-colors text-sm ${
+                      selectedColors.includes(color)
+                        ? 'bg-brand-secondary text-white border-brand-secondary'
+                        : 'bg-white text-brand-secondary border-brand-quaternary hover:border-brand-secondary'
+                    }`}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={customColor}
+                onChange={(e) => setCustomColor(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && addCustomColor()}
+                placeholder="Custom color"
+                className="flex-1 px-3 py-2 border-2 border-brand-quaternary rounded-lg text-sm focus:outline-none focus:border-brand-primary"
+              />
+              <button
+                onClick={addCustomColor}
+                className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm hover:bg-brand-secondary hover:text-brand-primary transition-colors font-bold"
+              >
+                +
+              </button>
+            </div>
+            {selectedColors.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {selectedColors.map(color => (
+                  <span
+                    key={color}
+                    className="px-2 py-1 bg-brand-secondary text-white rounded-full text-xs flex items-center gap-1"
+                  >
+                    {color}
+                    <button
+                      onClick={() => toggleColor(color)}
+                      className="hover:text-red-200"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Quantity */}
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-2">Quantity (per combination)</label>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="w-8 h-8 rounded-full bg-brand-quaternary text-white font-bold hover:bg-brand-primary transition-colors text-sm"
+              >
+                -
+              </button>
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                className="w-16 text-center border-2 border-brand-quaternary rounded-lg py-1 font-semibold text-sm"
+              />
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="w-8 h-8 rounded-full bg-brand-quaternary text-white font-bold hover:bg-brand-primary transition-colors text-sm"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* Combinations Preview */}
+          {(selectedSizes.length > 0 || selectedColors.length > 0) && (
+            <div className="mb-4 p-3 bg-green-50 border-2 border-green-200 rounded-lg">
+              <p className="text-sm font-semibold text-green-700 mb-1">
+                {(selectedSizes.length || 1) * (selectedColors.length || 1)} combination(s) will be added to cart
+              </p>
+              <p className="text-xs text-green-600">
+                {selectedSizes.length > 0 && `${selectedSizes.length} size(s)`}
+                {selectedSizes.length > 0 && selectedColors.length > 0 && ' × '}
+                {selectedColors.length > 0 && `${selectedColors.length} color(s)`}
+                {' with quantity ' + quantity + ' each'}
+              </p>
+              <p className="text-xs text-green-700 font-semibold mt-1">
+                Total pieces: {(selectedSizes.length || 1) * (selectedColors.length || 1) * quantity}
+              </p>
+            </div>
           )}
 
           {/* Error Message */}

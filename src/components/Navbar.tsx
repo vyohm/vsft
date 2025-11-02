@@ -70,11 +70,11 @@ export default function Navbar() {
             <li>
               <Link
                 href="/order"
-                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm relative"
+                className="text-brand-light hover:text-brand-secondary transition-colors uppercase tracking-wide text-sm inline-flex items-center gap-2"
               >
                 Order
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-3 bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="bg-brand-secondary text-brand-primary text-xs font-bold rounded-full h-5 min-w-[20px] px-1.5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
