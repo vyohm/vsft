@@ -7,6 +7,7 @@ import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
 import QuickAddModal from './QuickAddModal'
 import AddItemModal from './AddItemModal'
+import EditPriceModal from './EditPriceModal'
 
 const ITEMS_PER_PAGE = 12
 
@@ -73,6 +74,7 @@ export default function CatalogueGrid() {
   const [availableSizes, setAvailableSizes] = useState<string[]>([])
   const [searchError, setSearchError] = useState<string | null>(null)
   const [showAddItemModal, setShowAddItemModal] = useState(false)
+  const [editPriceItem, setEditPriceItem] = useState<ItemWithStock | null>(null)
 
   // Debounce search query
   useEffect(() => {
@@ -523,6 +525,7 @@ export default function CatalogueGrid() {
         <QuickAddModal
           item={quickAddItem}
           onClose={() => setQuickAddItem(null)}
+          onEditPrice={() => setEditPriceItem(quickAddItem)}
         />
       )}
 
@@ -535,6 +538,24 @@ export default function CatalogueGrid() {
             setShowAddItemModal(false)
             setSearchError(null)
             // Trigger a refresh by updating the search
+            setDebouncedSearchQuery('')
+            setTimeout(() => {
+              setDebouncedSearchQuery(searchQuery)
+            }, 100)
+          }}
+        />
+      )}
+
+      {/* Edit Price Modal */}
+      {editPriceItem && (
+        <EditPriceModal
+          itemId={editPriceItem.id.toString()}
+          designNumber={editPriceItem.design_number}
+          currentPrice={editPriceItem.price}
+          onClose={() => setEditPriceItem(null)}
+          onSuccess={() => {
+            setEditPriceItem(null)
+            // Trigger a refresh
             setDebouncedSearchQuery('')
             setTimeout(() => {
               setDebouncedSearchQuery(searchQuery)
