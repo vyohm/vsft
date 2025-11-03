@@ -18,7 +18,6 @@ export default function AddItemModal({ designNumber, onClose, onSuccess }: AddIt
   // Form fields
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
-  const [description, setDescription] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
@@ -44,8 +43,7 @@ export default function AddItemModal({ designNumber, onClose, onSuccess }: AddIt
         body: JSON.stringify({
           design_number: designNumber,
           name: name || `Design ${designNumber}`,
-          price: parseFloat(price),
-          description: description || null
+          price: parseFloat(price)
         })
       })
 
@@ -149,19 +147,6 @@ export default function AddItemModal({ designNumber, onClose, onSuccess }: AddIt
                   className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary"
                   placeholder="0.00"
                   required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Description (Optional)
-                </label>
-                <textarea
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary"
-                  rows={3}
-                  placeholder="Enter description..."
                 />
               </div>
 

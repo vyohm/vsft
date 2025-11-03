@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { design_number, name, price, description } = body
+    const { design_number, name, price } = body
 
     // Validate required fields
     if (!design_number || !price) {
@@ -44,7 +44,6 @@ export async function POST(request: NextRequest) {
           design_number,
           name: name || `Design ${design_number}`,
           price,
-          description,
           is_active: true
         }
       ])
