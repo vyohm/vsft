@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { design_number, name, price } = body
+    const { design_number, price } = body
 
     // Validate required fields
     if (!design_number || !price) {
@@ -36,13 +36,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Insert new catalogue item
+    // Insert new catalogue item (only design_number, price, and is_active)
     const { data: newItem, error: insertError } = await supabase
       .from('catalogue_items')
       .insert([
         {
           design_number,
-          name: name || `Design ${design_number}`,
           price,
           is_active: true
         }

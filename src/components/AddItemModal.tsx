@@ -16,7 +16,6 @@ export default function AddItemModal({ designNumber, onClose, onSuccess }: AddIt
   const [passwordError, setPasswordError] = useState('')
 
   // Form fields
-  const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -42,7 +41,6 @@ export default function AddItemModal({ designNumber, onClose, onSuccess }: AddIt
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           design_number: designNumber,
-          name: name || `Design ${designNumber}`,
           price: parseFloat(price)
         })
       })
@@ -119,19 +117,6 @@ export default function AddItemModal({ designNumber, onClose, onSuccess }: AddIt
                   value={designNumber}
                   disabled
                   className="w-full p-3 border-2 border-gray-300 rounded-lg bg-gray-100"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Name (Optional)
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary"
-                  placeholder={`Design ${designNumber}`}
                 />
               </div>
 
