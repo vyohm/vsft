@@ -6,6 +6,7 @@ import { CatalogueItemWithPhotos, StockItem } from '@/lib/types'
 import { formatPrice } from '@/lib/utils'
 import Pagination from './Pagination'
 import QuickAddModal from './QuickAddModal'
+import AddItemModal from './AddItemModal'
 
 const ITEMS_PER_PAGE = 12
 
@@ -71,6 +72,7 @@ export default function CatalogueGrid() {
   const [availableColors, setAvailableColors] = useState<string[]>([])
   const [availableSizes, setAvailableSizes] = useState<string[]>([])
   const [searchError, setSearchError] = useState<string | null>(null)
+  const [showAddItemModal, setShowAddItemModal] = useState(false)
 
   // Debounce search query
   useEffect(() => {
@@ -393,18 +395,30 @@ export default function CatalogueGrid() {
 
       {/* Search error notification */}
       {searchError && (
-        <div className="mb-4 p-3 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-sm text-center flex items-center justify-between">
-          <span>{searchError}</span>
-          <button
-            onClick={() => {
-              setSearchQuery('')
-              setDebouncedSearchQuery('')
-              setSearchError(null)
-            }}
-            className="ml-4 px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-xs"
-          >
-            Clear Search
-          </button>
+        <div className="mb-4 p-3 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-sm flex items-center justify-between">
+          <span className="flex-1">{searchError}</span>
+          <div className="flex items-center gap-2 ml-4">
+            <button
+              onClick={() => setShowAddItemModal(true)}
+              className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 text-xs flex items-center gap-1"
+              title="Add this item to catalogue"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Add
+            </button>
+            <button
+              onClick={() => {
+                setSearchQuery('')
+                setDebouncedSearchQuery('')
+                setSearchError(null)
+              }}
+              className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 text-xs"
+            >
+              Clear
+            </button>
+          </div>
         </div>
       )}
 
@@ -509,6 +523,23 @@ export default function CatalogueGrid() {
         <QuickAddModal
           item={quickAddItem}
           onClose={() => setQuickAddItem(null)}
+        />
+      )}
+
+      {/* Add Item Modal */}
+      {showAddItemModal && debouncedSearchQuery && (
+        <AddItemModal
+          designNumber={debouncedSearchQuery}
+          onClose={() => setShowAddItemModal(false)}
+          onSuccess={() => {
+            setShowAddItemModal(false)
+            setSearchError(null)
+            // Trigger a refresh by updating the search
+            setDebouncedSearchQuery('')
+            setTimeout(() => {
+              setDebouncedSearchQuery(searchQuery)
+            }, 100)
+          }}
         />
       )}
     </>
